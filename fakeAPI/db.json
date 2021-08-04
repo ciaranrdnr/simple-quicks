@@ -1,0 +1,32 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Diskon Croffle",
+      "description": "Diskon 70%",
+      "date": "2021-08-06",
+      "done": false
+    },
+    {
+      "id": 2,
+      "title": "Set up documentation report for several Cases : Case 145443, Case 192829 and Case 182203",
+      "description": "All Cases must include all payment transactions, all documents and forms filled. All conversations in comments and messages in channels and emails should be provided as well in.",
+      "date": "2021-06-14",
+      "done": false
+    },
+    {
+      "id": 3,
+      "title": "Close off Case #012920- RODRIGUES, Amiguel",
+      "description": "Closing off this case since this application has been cancelled. No one really understand how this case could possibly be cancelled. The options and the documents within this document were totally a guaranteed for a success!",
+      "date": "2021-06-12",
+      "done": false
+    },
+    {
+      "id": 4,
+      "title": "TUJUH BELAS",
+      "description": "Hari Kemerdekaan Indonesia",
+      "date": "2021-08-17",
+      "done": false
+    }
+  ]
+}
