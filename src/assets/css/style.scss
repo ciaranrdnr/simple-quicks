@@ -95,20 +95,16 @@ input {
 }
 .ModalTask-inner {
   position: absolute;
-  // margin: 1rem;
   padding: 1rem;
-  // padding: 2rem;
   right: 1.2rem;
   bottom: 6rem;
   border-radius: 5px;
   max-width: 734px;
   max-height: 80vh;
-  height: 85vh;
+  min-height: 45vh;
   background-color: white;
 }
 .ModalTask-bottom {
-  // margin: 1rem;
-  // padding: 2rem;
   border-radius: 5px;
   overflow-y: scroll;
   max-width: 734px;
@@ -485,7 +481,7 @@ svg {
     width: 88vw;
     overflow-y: hidden;
     max-height: 80vh;
-    min-height: 75vh;
+    min-height: 65vh;
     background-color: white;
   }
   .ModalTask-top {
@@ -498,7 +494,7 @@ svg {
     overflow-y: scroll;
     max-width: 734px;
     max-height: 80vh;
-    min-height: 75vh;
+    // min-height: 75vh;
     background-color: white;
   }
   .typeBar.Title {

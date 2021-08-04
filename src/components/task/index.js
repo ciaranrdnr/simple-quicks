@@ -1,5 +1,3 @@
-// import { ReactComponent as IconClock } from "../../assets/icons/clock.svg";
-// import { ReactComponent as IconPencil } from "../../assets/icons/pencil.svg";
 import { ReactComponent as IconBox } from "../../assets/icons/box.svg";
 import { ReactComponent as IconCheckBox } from "../../assets/icons/checkbox.svg";
 import { ReactComponent as IconExpand } from "../../assets/icons/expand.svg";

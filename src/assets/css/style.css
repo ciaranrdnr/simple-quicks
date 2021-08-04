@@ -105,7 +105,7 @@ input {
   border-radius: 5px;
   max-width: 734px;
   max-height: 80vh;
-  height: 85vh;
+  min-height: 45vh;
   background-color: white;
 }
 
@@ -583,7 +583,7 @@ svg.icon-clock.blue > path {
     width: 88vw;
     overflow-y: hidden;
     max-height: 80vh;
-    min-height: 75vh;
+    min-height: 65vh;
     background-color: white;
   }
   .ModalTask-top {
@@ -594,7 +594,6 @@ svg.icon-clock.blue > path {
     overflow-y: scroll;
     max-width: 734px;
     max-height: 80vh;
-    min-height: 75vh;
     background-color: white;
   }
   .typeBar.Title {
