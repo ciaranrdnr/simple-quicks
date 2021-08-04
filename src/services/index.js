@@ -1,7 +1,7 @@
 import axios from "axios";
 import { reject, resolve } from "q";
-
-const RootPath = "http://localhost:3004";
+const RootPath = "https://610ab45252d56400176aff22.mockapi.io";
+// const RootPath = "http://localhost:3004";
 const Get = (path) => {
   const promise = new Promise((resolve, reject) => {
     axios.get(`${RootPath}/${path}`).then(
