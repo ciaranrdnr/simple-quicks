@@ -49,124 +49,139 @@ const Task = ({
       }
     }
   };
+  const isFilled = () => {
+    if (
+      id !== "" ||
+      title !== "" ||
+      description !== "" ||
+      date !== "" ||
+      done !== ""
+    ) {
+      return true;
+    }
+  };
   return (
-    <form onSubmit={() => onEnterPress}>
-      <div className="container-item column white border-bottom">
-        <div className="item row">
-          <div className="row">
-            <button
-              type=""
-              className="no-box no-border"
-              onClick={(e) => {
-                e.preventDefault();
-                setChecked(!checked);
-                handleEditTask(id, t, desc, d, !checked);
-              }}
-            >
-              {checked ? <IconCheckBox /> : <IconBox />}
-            </button>
-          </div>
-          <div className="row">
-            {checked ? (
-              <TypeBar
-                ph="Task Title"
-                btn="none"
-                class="no-box bold done"
-                onChange={(e) => {
-                  setT(e.target.value);
-                }}
-                width="300"
-                value={t}
-              />
-            ) : (
-              <TypeBar
-                ph="Task Title"
-                btn="none"
-                class="no-box bold"
-                onChange={(e) => {
-                  setT(e.target.value);
-                }}
-                width="300"
-                value={t}
-              />
-            )}
-          </div>
-          <div className="space row ">
-            <p className="limit">{setInterval(date)}</p>
-            <p>{date}</p>
-            <button
-              className="no-box no-border"
-              onClick={(e) => {
-                e.preventDefault();
-                setShowValue(!showValue);
-              }}
-            >
-              {showValue ? <IconExpand /> : <IconMinimize />}
-            </button>
-            <div className="dropdown">
-              <button
-                className="no-box no-border"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setShowDelete(!showDelete);
-                }}
-              >
-                <IconDots />
-              </button>
-              {showDelete ? (
-                <Btn
-                  title="Delete"
-                  color="white"
-                  ripple="white"
+    <>
+      {isFilled ? (
+        <form onSubmit={() => onEnterPress}>
+          <div className="container-item column white border-bottom">
+            <div className="item row">
+              <div className="row">
+                <button
+                  type=""
+                  className="no-box no-border"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleDeleteTask(id);
+                    setChecked(!checked);
+                    handleEditTask(id, t, desc, d, !checked);
                   }}
-                />
-              ) : null}
-            </div>
-          </div>
-        </div>
-        {showValue ? (
-          <div className="row start value">
-            <div className="row empty"></div>
-            <div className="column">
-              <div className="row item">
-                <IconClock color="blue" />
-                <TypeBar
-                  ph="Set Date"
-                  btn="none"
-                  type="date"
-                  date={d}
-                  onChange={(e) => {
-                    setD(e.target.value);
-                  }}
-                  width="220"
-                />
+                >
+                  {checked ? <IconCheckBox /> : <IconBox />}
+                </button>
               </div>
-              <div className="item row start ">
-                {desc !== "" ? (
-                  <IconPencil color="blue" />
+              <div className="row">
+                {checked ? (
+                  <TypeBar
+                    ph="Task Title"
+                    btn="none"
+                    class="no-box bold done"
+                    onChange={(e) => {
+                      setT(e.target.value);
+                    }}
+                    width="300"
+                    value={t}
+                  />
                 ) : (
-                  <IconPencil color="grey" />
+                  <TypeBar
+                    ph="Task Title"
+                    btn="none"
+                    class="no-box bold"
+                    onChange={(e) => {
+                      setT(e.target.value);
+                    }}
+                    width="300"
+                    value={t}
+                  />
                 )}
-
-                <textarea
-                  className="no-box description"
-                  rows="3"
-                  placeholder="No Description"
-                  value={desc}
-                  onChange={(e) => {
-                    setDesc(e.target.value);
+              </div>
+              <div className="space row ">
+                <p className="limit">{setInterval(date)}</p>
+                <p>{date}</p>
+                <button
+                  className="no-box no-border"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setShowValue(!showValue);
                   }}
-                  onKeyDown={onEnterPress}
-                />
+                >
+                  {showValue ? <IconExpand /> : <IconMinimize />}
+                </button>
+                <div className="dropdown">
+                  <button
+                    className="no-box no-border"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowDelete(!showDelete);
+                    }}
+                  >
+                    <IconDots />
+                  </button>
+                  {showDelete ? (
+                    <Btn
+                      title="Delete"
+                      color="white"
+                      ripple="white"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleDeleteTask(id);
+                      }}
+                    />
+                  ) : null}
+                </div>
               </div>
             </div>
+            {showValue ? (
+              <div className="row start value">
+                <div className="row empty"></div>
+                <div className="column">
+                  <div className="row item">
+                    <IconClock color="blue" />
+                    <TypeBar
+                      ph="Set Date"
+                      btn="none"
+                      type="date"
+                      date={d}
+                      onChange={(e) => {
+                        setD(e.target.value);
+                      }}
+                      width="220"
+                    />
+                  </div>
+                  <div className="item row start ">
+                    {desc !== "" ? (
+                      <IconPencil color="blue" />
+                    ) : (
+                      <IconPencil color="grey" />
+                    )}
+
+                    <textarea
+                      className="no-box description"
+                      rows="3"
+                      placeholder="No Description"
+                      value={desc}
+                      onChange={(e) => {
+                        setDesc(e.target.value);
+                      }}
+                      onKeyDown={onEnterPress}
+                    />
+                  </div>
+                </div>
+              </div>
+            ) : null}
           </div>
-        ) : null}
-      </div>
-    </form>
+        </form>
+      ) : null}
+    </>
   );
 };
 

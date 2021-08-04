@@ -3,6 +3,7 @@ import Task from "../task";
 import AddTask from "../addTask";
 
 const TaskList = ({
+  showNewTask,
   tasks,
   handleAddTask,
   handleEditTask,
@@ -10,7 +11,8 @@ const TaskList = ({
 }) => {
   return (
     <div className="tasks-list">
-      <AddTask handleAddTask={handleAddTask} />
+      {showNewTask ? <AddTask handleAddTask={handleAddTask} /> : null}
+
       {tasks
         .slice(0)
         .reverse()

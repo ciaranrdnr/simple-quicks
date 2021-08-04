@@ -50,6 +50,7 @@ const AddTask = ({ handleAddTask }) => {
               <TypeBar
                 ph="Task Title"
                 btn="none"
+                class="addTask"
                 width="400"
                 value={title}
                 onChange={(e) => {
@@ -107,7 +108,6 @@ const AddTask = ({ handleAddTask }) => {
                     onChange={(e) => {
                       setDate(e.target.value);
                     }}
-                    min={`${Y}-${M}-${D}`}
                     width="220"
                   />
                 </div>

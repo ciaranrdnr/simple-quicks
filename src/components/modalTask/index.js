@@ -5,11 +5,12 @@ import API from "../../services";
 import Btn from "../btn";
 
 const ModalTask = () => {
+  const [showNewTask, setShowNewTask] = useState(false);
   const [tasks, setTasks] = useState([
     {
       id: nanoid(),
-      title: "",
-      description: "",
+      title: "Title",
+      description: "Description",
       date: "",
     },
   ]);
@@ -65,10 +66,19 @@ const ModalTask = () => {
       <div className="ModalTask-inner">
         <div className="ModalTask-top">
           <ul></ul>
-          <Btn color="blue" ripple="blue" title="New Task" />
+          <Btn
+            color="blue"
+            ripple="blue"
+            title="New Task"
+            onClick={(e) => {
+              e.preventDefault();
+              setShowNewTask(!showNewTask);
+            }}
+          />
         </div>
         <div className="ModalTask-bottom">
           <TaskList
+            showNewTask={showNewTask}
             tasks={tasks}
             handleAddTask={addTask}
             handleEditTask={editTask}
