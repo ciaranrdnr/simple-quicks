@@ -27,7 +27,7 @@ const TypeBar = (props) => {
   } else {
     return (
       <input
-        placeholder={`Type ${props.ph} ${props.title}`}
+        placeholder={`Type ${props.ph}`}
         className={`${props.ph} ${props.class} typeBar`}
         value={props.value}
         onChange={props.onChange}
