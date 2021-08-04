@@ -102,10 +102,10 @@ const AddTask = ({ handleAddTask }) => {
                     ph="Set Date"
                     btn="none"
                     type="date"
-                    date={`${Y}-${M}-${D}`}
+                    value={date}
+                    min={`${Y}-${M}-${D}`}
                     onChange={(e) => {
                       setDate(e.target.value);
-                      console.log(date);
                     }}
                     min={`${Y}-${M}-${D}`}
                     width="220"
