@@ -59,31 +59,27 @@ const ModalTask = () => {
     updateAPI(editedTask);
     console.log(tasks);
   };
-  const options = [
-    { value: "My Tasks", label: "My Tasks" },
-    { value: "Personal Errands", label: "Personal Errands" },
-    { value: "Urgent To-Do", label: "Urgent To-Do" },
-  ];
-  const defaultOption = options[0];
-  const [onSelect, setOnSelect] = useState(defaultOption);
 
   useEffect(() => {
     getAPI({});
   }, []);
+  const [selectedClient, setSelectedClient] = useState([]);
 
   return (
     <div className="ModalTask">
       <div className="ModalTask-inner">
         <div className="ModalTask-top">
-          <Dropdown
-            options={options}
+          <select
+            value={selectedClient}
             onChange={(e) => {
-              // setOnSelect(e.target.value);
-              console.log(e.target.value);
+              setSelectedClient(e.target.value);
             }}
-            value={onSelect}
-            placeholder="Select an option"
-          />
+          >
+            {" "}
+            <option value="My Tasks">My Tasks</option>
+            <option value="Personal Errands">Personal Errands</option>
+            <option value="Urgent To-Do">Urgent To-Do</option>
+          </select>
           ;
           <Btn
             color="blue"
