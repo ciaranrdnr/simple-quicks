@@ -143,50 +143,48 @@ const Task = ({
               </div>
             </div>
             {showValue ? (
-              <div className="row start value">
-                <div className="row empty"></div>
-                <div className="column">
-                  <div className="row item">
-                    <IconClock color="blue" />
-                    <TypeBar
-                      ph="Set Date"
-                      btn="none"
-                      type="date"
-                      date={d}
-                      onChange={(e) => {
-                        setD(e.target.value);
-                      }}
-                      width="220"
-                    />
-                  </div>
-                  <div className="item row start ">
-                    {desc !== "" ? (
-                      <IconPencil color="blue" />
-                    ) : (
-                      <IconPencil color="grey" />
-                    )}
+              <div className="task-value">
+                <div className="taskValue-top">
+                  <IconClock color="blue" />
+                  <TypeBar
+                    ph="Set Date"
+                    btn="none"
+                    type="date"
+                    date={d}
+                    onChange={(e) => {
+                      setD(e.target.value);
+                    }}
+                    width="220"
+                  />
+                </div>
+                <div className="taskValue-bottom">
+                  {desc !== "" ? (
+                    <IconPencil color="blue" />
+                  ) : (
+                    <IconPencil color="grey" />
+                  )}
 
-                    <textarea
-                      className="no-box description"
-                      cols="73"
-                      rows="3"
-                      placeholder="No Description"
-                      value={desc}
-                      onChange={(e) => {
-                        setDesc(e.target.value);
-                      }}
-                      onKeyDown={onEnterPress}
-                      onBlur={(e) => {
-                        e.preventDefault();
-                        if (
-                          (title.trim().length > 0) &
-                          (description.trim().length > 0)
-                        ) {
-                          handleEditTask(id, t, desc, d, checked);
-                        }
-                      }}
-                    />
-                  </div>
+                  <textarea
+                    className="no-box description"
+                    cols="1"
+                    wrap="hard"
+                    rows="3"
+                    placeholder="No Description"
+                    value={desc}
+                    onChange={(e) => {
+                      setDesc(e.target.value);
+                    }}
+                    onKeyDown={onEnterPress}
+                    onBlur={(e) => {
+                      e.preventDefault();
+                      if (
+                        (title.trim().length > 0) &
+                        (description.trim().length > 0)
+                      ) {
+                        handleEditTask(id, t, desc, d, checked);
+                      }
+                    }}
+                  />
                 </div>
               </div>
             ) : null}

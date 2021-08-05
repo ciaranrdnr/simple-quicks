@@ -59,7 +59,6 @@ const ModalTask = ({ showTask, setShowTask }) => {
       done: done,
     };
     updateAPI(editedTask);
-    console.log(tasks);
   };
 
   const closeModal = (e) => {

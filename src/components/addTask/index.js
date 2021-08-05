@@ -60,7 +60,7 @@ const AddTask = ({ handleAddTask }) => {
                 />
               </div>
             </div>
-            <div className="taskTopper-right">
+            <div className="addTaskTopper-right">
               <button
                 className="no-box no-border"
                 onClick={(e) => {
@@ -96,53 +96,51 @@ const AddTask = ({ handleAddTask }) => {
             </div>
           </div>
           {showValue ? (
-            <div className="row start value">
-              <div className="column">
-                <div className="row item">
-                  <IconClock />
-                  <TypeBar
-                    ph="Set Date"
-                    btn="none"
-                    type="date"
-                    value={date}
-                    min={`${Y}-${M}-${D}`}
-                    onChange={(e) => {
-                      setDate(e.target.value);
-                    }}
-                    width="220"
-                  />
-                </div>
-                <div className="item row start ">
-                  {description !== "" ? (
-                    <IconPencil color="blue" />
-                  ) : (
-                    <IconPencil color="grey" />
-                  )}
-                  <textarea
-                    className="no-box description"
-                    rows="2"
-                    placeholder="No Description"
-                    value={description}
-                    onChange={(e) => {
-                      setDescription(e.target.value);
-                    }}
-                    onKeyDown={onEnterPress}
-                    onBlur={(e) => {
-                      e.preventDefault();
-                      if (
-                        (title.trim().length > 0) &
-                        (description.trim().length > 0)
-                      ) {
-                        handleAddTask(title, description, date);
-                        setDescription("");
-                        setTitle("");
-                        setDate(`${Y}-${M}-${D}`);
-                        setShowNew(false);
-                        alert("Added New Task");
-                      }
-                    }}
-                  />
-                </div>
+            <div className="addTask-value">
+              <div className="addTaskValue-top">
+                <IconClock />
+                <TypeBar
+                  ph="Set Date"
+                  btn="none"
+                  type="date"
+                  value={date}
+                  min={`${Y}-${M}-${D}`}
+                  onChange={(e) => {
+                    setDate(e.target.value);
+                  }}
+                  width="220"
+                />
+              </div>
+              <div className="addTaskValue-bottom">
+                {description !== "" ? (
+                  <IconPencil color="blue" />
+                ) : (
+                  <IconPencil color="grey" />
+                )}
+                <textarea
+                  className="no-box description"
+                  rows="2"
+                  placeholder="No Description"
+                  value={description}
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                  }}
+                  onKeyDown={onEnterPress}
+                  onBlur={(e) => {
+                    e.preventDefault();
+                    if (
+                      (title.trim().length > 0) &
+                      (description.trim().length > 0)
+                    ) {
+                      handleAddTask(title, description, date);
+                      setDescription("");
+                      setTitle("");
+                      setDate(`${Y}-${M}-${D}`);
+                      setShowNew(false);
+                      alert("Added New Task");
+                    }
+                  }}
+                />
               </div>
             </div>
           ) : null}

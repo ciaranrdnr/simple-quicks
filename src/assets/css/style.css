@@ -48,6 +48,37 @@ input.Task.Title.addTask.typeBar {
   margin-left: 0.6rem;
 }
 
+.task-value .taskValue-top,
+.task-value .taskValue-bottom,
+.task-value .addTaskValue-top,
+.task-value .addTaskValue-bottom,
+.addTask-value .taskValue-top,
+.addTask-value .taskValue-bottom,
+.addTask-value .addTaskValue-top,
+.addTask-value .addTaskValue-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.6rem;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.task-value .taskValue-top .typeBar,
+.task-value .taskValue-bottom .typeBar,
+.task-value .addTaskValue-top .typeBar,
+.task-value .addTaskValue-bottom .typeBar,
+.addTask-value .taskValue-top .typeBar,
+.addTask-value .taskValue-bottom .typeBar,
+.addTask-value .addTaskValue-top .typeBar,
+.addTask-value .addTaskValue-bottom .typeBar {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .taskTopper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -73,9 +104,6 @@ input.Task.Title.addTask.typeBar {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
   float: right;
 }
 
@@ -83,23 +111,31 @@ input.Task.Title.addTask.typeBar {
   padding: 0 1rem;
 }
 
-.typeBar {
+.addTask-Topper {
+  margin: 0;
+}
+
+.addTask-Topper > .addTaskTopper-right {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.typeBar {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   padding: 0.625rem 1rem;
-  position: relative;
   font-family: "Lato", sans-serif;
   font-size: 1rem;
   height: 2.5rem;
-  background: #ffffff;
   border: 1px solid #828282;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -353,6 +389,23 @@ svg.icon-clock.blue > path {
           align-items: center;
 }
 
+.addTask-Topper > .addTaskTopper-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  float: right;
+}
+
 .dropdown .Delete {
   color: #eb5757;
   border: solid 1px #4f4f4f;
@@ -602,6 +655,10 @@ svg.icon-clock.blue > path {
           align-items: flex-end;
 }
 
+.limit {
+  color: #eb5757 !important;
+}
+
 .item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -616,10 +673,6 @@ svg.icon-clock.blue > path {
 .item > p,
 .item > b {
   margin: 0.3rem;
-}
-
-.item .limit {
-  color: #eb5757;
 }
 
 .item > p {
@@ -654,6 +707,18 @@ svg.icon-clock.blue > path {
   body {
     font-size: 14px;
   }
+  .addTask-Topper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
   .taskTopper {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -668,25 +733,8 @@ svg.icon-clock.blue > path {
         -ms-flex-align: start;
             align-items: flex-start;
   }
-  .taskTopper > .taskTopper {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-  }
-  .taskTopper > .taskTopper > p {
+  .taskTopper > p {
     padding: 0 1rem;
-  }
-  div.addTask {
-    width: auto;
   }
   input {
     text-overflow: ellipsis !important;
@@ -694,7 +742,7 @@ svg.icon-clock.blue > path {
     white-space: nowrap !important;
   }
   input.Task.Title.addTask.typeBar {
-    max-width: 55vw;
+    max-width: 48vw;
   }
   textarea {
     font-family: "Lato", sans-serif;
@@ -707,7 +755,7 @@ svg.icon-clock.blue > path {
     resize: none;
     padding: 0.625rem 1rem 0rem 1rem;
     text-align: justify;
-    text-justify: inter-word;
+    text-justify: auto;
   }
   .background {
     position: fixed;

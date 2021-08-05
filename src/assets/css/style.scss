@@ -59,6 +59,21 @@ input {
     margin-left: 0.6rem;
   }
 }
+
+.task-value,
+.addTask-value {
+  .taskValue-top,
+  .taskValue-bottom,
+  .addTaskValue-top,
+  .addTaskValue-bottom {
+    display: flex;
+    padding: 0.6rem;
+    flex-direction: row;
+    .typeBar {
+      align-items: center;
+    }
+  }
+}
 .taskTopper {
   display: flex;
   flex-direction: row;
@@ -68,7 +83,6 @@ input {
     flex-direction: row;
     min-width: 300px;
     align-items: center;
-    justify-content: flex-end;
     float: right;
     > p {
       padding: 0 1rem;
@@ -76,18 +90,23 @@ input {
   }
 }
 
+.addTask-Topper {
+  // position: absolute  ;
+  margin: 0;
+  > .addTaskTopper-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
 // TypeBar
 .typeBar {
-  display: flex;
   flex-direction: row;
-  align-items: center;
   padding: 0.625rem 1rem;
-  position: relative;
 
   font-family: "Lato", sans-serif;
   font-size: 1rem;
   height: 2.5rem;
-  background: #ffffff;
   border: 1px solid #828282;
   box-sizing: border-box;
   border-radius: 5px;
@@ -280,6 +299,13 @@ svg {
     flex-direction: row;
     align-items: center;
   }
+  > .addTaskTopper-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    float: right;
+  }
 }
 .dropdown {
   // position: absolute;
@@ -465,6 +491,10 @@ svg {
   display: flex;
   align-items: flex-end;
 }
+.limit {
+  color: $indicator-red !important;
+}
+
 .item {
   display: flex;
   margin: 0.5rem;
@@ -474,9 +504,7 @@ svg {
   > b {
     margin: 0.3rem;
   }
-  .limit {
-    color: $indicator-red;
-  }
+
   > p {
     font-size: 0.875rem;
     overflow: hidden;
@@ -506,31 +534,28 @@ svg {
   body {
     font-size: 14px;
   }
+  .addTask-Topper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
   .taskTopper {
     display: flex;
     flex-wrap: wrap-reverse;
     flex-direction: column-reverse;
     align-items: flex-start;
 
-    > .taskTopper {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column-reverse;
-      align-items: flex-start;
-      > p {
-        padding: 0 1rem;
-      }
+    > p {
+      padding: 0 1rem;
     }
   }
-  div.addTask {
-    width: auto;
-  }
+
   input {
     text-overflow: ellipsis !important;
     overflow: hidden !important;
     white-space: nowrap !important;
     &.Task.Title.addTask.typeBar {
-      max-width: 55vw;
+      max-width: 48vw;
     }
   }
   // textarea
@@ -545,7 +570,7 @@ svg {
     resize: none;
     padding: 0.625rem 1rem 0rem 1rem;
     text-align: justify;
-    text-justify: inter-word;
+    text-justify: auto;
   }
 
   .background {
@@ -592,7 +617,6 @@ svg {
     align-items: center;
     padding: 0.625rem 1rem;
     position: relative;
-    // width: 10vh;
     font-family: "Lato", sans-serif;
     font-size: 1rem;
     height: 2.5rem;
