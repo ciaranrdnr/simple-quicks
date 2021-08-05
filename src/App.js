@@ -16,6 +16,8 @@ function App() {
     <div className="App">
       {showTask ? (
         <ModalTask
+          showTask={showTask}
+          setShowTask={setShowTask}
           onBlur={(e) => {
             e.preventDefault();
             setShowTask(false);

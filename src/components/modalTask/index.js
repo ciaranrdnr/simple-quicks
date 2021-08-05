@@ -1,11 +1,12 @@
 import TaskList from "../taskList";
+import { useSpring, animated } from "react-spring";
 import { nanoid } from "nanoid";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import API from "../../services";
 import Btn from "../btn";
 import "react-dropdown/style.css";
-
-const ModalTask = (props) => {
+const ModalTask = ({ showTask, setShowTask }) => {
+  const modalRef = useRef();
   const [didMount, setDidMount] = useState(false);
   const [showNewTask, setShowNewTask] = useState(false);
   const [selectedClient, setSelectedClient] = useState("");
@@ -61,49 +62,80 @@ const ModalTask = (props) => {
     console.log(tasks);
   };
 
+  const closeModal = (e) => {
+    if (modalRef.current === e.target) {
+      setShowTask(false);
+    }
+  };
+  const keyPress = useCallback(
+    (e) => {
+      if (e.key === "Escape" && showTask) {
+        setShowTask(false);
+      }
+    },
+    [setShowTask, showTask]
+  );
+  const animation = useSpring({
+    config: {
+      duration: 250,
+    },
+    opacity: showTask ? 1 : 0,
+    transform: showTask ? "traslateY(0%)" : "translateY(-100%)",
+  });
+
   useEffect(() => {
+    document.addEventListener("keydown", keyPress);
     getAPI({});
     setDidMount(true);
-    return () => setDidMount(false);
-  }, []);
+    return () => {
+      document.removeEventListener("keydown", keyPress);
+      setDidMount(false);
+    };
+  }, [keyPress]);
   if (!didMount) {
     return null;
   }
   return (
-    <div className="ModalTask">
-      <div className="ModalTask-inner">
-        <div className="ModalTask-top">
-          <select
-            value={selectedClient}
-            onChange={(e) => {
-              setSelectedClient(e.target.value);
-            }}
-          >
-            <option value="My Tasks">My Tasks</option>
-            <option value="Personal Errands">Personal Errands</option>
-            <option value="Urgent To-Do">Urgent To-Do</option>
-          </select>
-          <Btn
-            color="blue"
-            ripple="blue"
-            title="New Task"
-            onClick={(e) => {
-              e.preventDefault();
-              setShowNewTask(!showNewTask);
-            }}
-          />
+    <>
+      {showTask ? (
+        <div className="background" ref={modalRef} onClick={closeModal}>
+          <animated.div style={animation}>
+            <div className="ModalTask-inner">
+              <div className="ModalTask-top">
+                <select
+                  value={selectedClient}
+                  onChange={(e) => {
+                    setSelectedClient(e.target.value);
+                  }}
+                >
+                  <option value="My Tasks">My Tasks</option>
+                  <option value="Personal Errands">Personal Errands</option>
+                  <option value="Urgent To-Do">Urgent To-Do</option>
+                </select>
+                <Btn
+                  color="blue"
+                  ripple="blue"
+                  title="New Task"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setShowNewTask(!showNewTask);
+                  }}
+                />
+              </div>
+              <div className="ModalTask-bottom">
+                <TaskList
+                  showNewTask={showNewTask}
+                  tasks={tasks}
+                  handleAddTask={addTask}
+                  handleEditTask={editTask}
+                  handleDeleteTask={deleteTask}
+                />
+              </div>
+            </div>
+          </animated.div>
         </div>
-        <div className="ModalTask-bottom">
-          <TaskList
-            showNewTask={showNewTask}
-            tasks={tasks}
-            handleAddTask={addTask}
-            handleEditTask={editTask}
-            handleDeleteTask={deleteTask}
-          />
-        </div>
-      </div>
-    </div>
+      ) : null}
+    </>
   );
 };
 export default ModalTask;

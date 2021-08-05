@@ -49,7 +49,7 @@ const Task = ({
       }
     }
   };
-  const isFilled = () => {
+  const notNull = () => {
     if (
       id !== "" ||
       title !== "" ||
@@ -62,7 +62,7 @@ const Task = ({
   };
   return (
     <>
-      {isFilled ? (
+      {notNull ? (
         <form onSubmit={() => onEnterPress}>
           <div className="container-item column white border-bottom">
             <div className="item row">
@@ -174,6 +174,15 @@ const Task = ({
                         setDesc(e.target.value);
                       }}
                       onKeyDown={onEnterPress}
+                      onBlur={(e) => {
+                        e.preventDefault();
+                        if (
+                          (title.trim().length > 0) &
+                          (description.trim().length > 0)
+                        ) {
+                          handleEditTask(id, t, desc, d, checked);
+                        }
+                      }}
                     />
                   </div>
                 </div>
