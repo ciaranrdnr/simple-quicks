@@ -3,6 +3,8 @@ import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import API from "../../services";
 import Btn from "../btn";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 const ModalTask = () => {
   const [showNewTask, setShowNewTask] = useState(false);
@@ -57,6 +59,14 @@ const ModalTask = () => {
     updateAPI(editedTask);
     console.log(tasks);
   };
+  const options = [
+    { value: "My Tasks", label: "My Tasks" },
+    { value: "Personal Errands", label: "Personal Errands" },
+    { value: "Urgent To-Do", label: "Urgent To-Do" },
+  ];
+  const defaultOption = options[0];
+  const [onSelect, setOnSelect] = useState(defaultOption);
+
   useEffect(() => {
     getAPI({});
   }, []);
@@ -65,7 +75,16 @@ const ModalTask = () => {
     <div className="ModalTask">
       <div className="ModalTask-inner">
         <div className="ModalTask-top">
-          <ul></ul>
+          <Dropdown
+            options={options}
+            onChange={(e) => {
+              // setOnSelect(e.target.value);
+              console.log(e.target.value);
+            }}
+            value={onSelect}
+            placeholder="Select an option"
+          />
+          ;
           <Btn
             color="blue"
             ripple="blue"

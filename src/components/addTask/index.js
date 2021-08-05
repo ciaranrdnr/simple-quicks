@@ -124,9 +124,22 @@ const AddTask = ({ handleAddTask }) => {
                     value={description}
                     onChange={(e) => {
                       setDescription(e.target.value);
-                      console.log(description);
                     }}
                     onKeyDown={onEnterPress}
+                    onBlur={(e) => {
+                      e.preventDefault();
+                      if (
+                        (title.trim().length > 0) &
+                        (description.trim().length > 0)
+                      ) {
+                        handleAddTask(title, description, date);
+                        setDescription("");
+                        setTitle("");
+                        setDate(`${Y}-${M}-${D}`);
+                        setShowNew(false);
+                        alert("Added New Task");
+                      }
+                    }}
                   />
                 </div>
               </div>

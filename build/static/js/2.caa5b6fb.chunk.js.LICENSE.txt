@@ -5,6 +5,12 @@ object-assign
 */
 
 /*!
+  Copyright (c) 2018 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+
+/*!
  *
  * Copyright 2009-2017 Kris Kowal under the terms of the MIT
  * license found at https://github.com/kriskowal/q/blob/v1/LICENSE
