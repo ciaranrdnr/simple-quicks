@@ -166,6 +166,7 @@ const Task = ({
 
                     <textarea
                       className="no-box description"
+                      cols="73"
                       rows="3"
                       placeholder="No Description"
                       value={desc}

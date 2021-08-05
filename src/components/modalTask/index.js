@@ -3,17 +3,18 @@ import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import API from "../../services";
 import Btn from "../btn";
-import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
-const ModalTask = () => {
+const ModalTask = (props) => {
+  const [didMount, setDidMount] = useState(false);
   const [showNewTask, setShowNewTask] = useState(false);
+  const [selectedClient, setSelectedClient] = useState("");
   const [tasks, setTasks] = useState([
     {
       id: nanoid(),
       title: "Title",
       description: "Description",
-      date: "",
+      date: "2021-08-25",
     },
   ]);
 
@@ -62,9 +63,12 @@ const ModalTask = () => {
 
   useEffect(() => {
     getAPI({});
+    setDidMount(true);
+    return () => setDidMount(false);
   }, []);
-  const [selectedClient, setSelectedClient] = useState([]);
-
+  if (!didMount) {
+    return null;
+  }
   return (
     <div className="ModalTask">
       <div className="ModalTask-inner">
@@ -75,12 +79,10 @@ const ModalTask = () => {
               setSelectedClient(e.target.value);
             }}
           >
-            {" "}
             <option value="My Tasks">My Tasks</option>
             <option value="Personal Errands">Personal Errands</option>
             <option value="Urgent To-Do">Urgent To-Do</option>
           </select>
-          ;
           <Btn
             color="blue"
             ripple="blue"

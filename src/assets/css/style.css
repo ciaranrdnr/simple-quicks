@@ -78,6 +78,7 @@ input.Task.Title.addTask.typeBar {
 select,
 option {
   font-family: "Lato", sans-serif;
+  background: white;
   font-size: 16px;
   border-radius: 5px;
   border: solid 1px #828282;
@@ -581,21 +582,6 @@ svg.icon-clock.blue > path {
     text-align: justify;
     text-justify: inter-word;
   }
-  .ModalTask {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-  }
   .ModalTask-top {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -608,7 +594,7 @@ svg.icon-clock.blue > path {
   .ModalTask-inner {
     position: absolute;
     right: 0.3rem;
-    bottom: 6rem;
+    bottom: 100px;
     overflow-y: hidden;
     border-radius: 5px;
     max-width: 734px;

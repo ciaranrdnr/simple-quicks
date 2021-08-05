@@ -1,5 +1,4 @@
 import axios from "axios";
-import { reject, resolve } from "q";
 const RootPath = "https://610ab45252d56400176aff22.mockapi.io";
 // const RootPath = "http://localhost:3004";
 const Get = (path) => {
@@ -32,6 +31,7 @@ const Post = (path, data) => {
 const Put = (path, data) => {
   const promise = new Promise((resolve, reject) => {
     axios.put(`${RootPath}/${path}`, data).then(
+      // axios.put(`${RootPath}/${path}`, data).then(
       (res) => {
         resolve(res.data);
       },
