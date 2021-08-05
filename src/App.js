@@ -6,11 +6,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [showTask, setShowTask] = useState(false);
-  useEffect(() => {
-    // document.addEventListener("mousedown", () => {
-    //   setShowTask(false);
-    // });
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="App">

@@ -59,6 +59,9 @@ input {
     margin-left: 0.6rem;
   }
 }
+.taskValue-top {
+  align-items: center;
+}
 .Task.Title {
   min-width: 250px;
 }
@@ -84,6 +87,7 @@ input {
     display: flex;
     flex-direction: row;
     min-width: 300px;
+    justify-content: flex-end;
     align-items: center;
     float: right;
     > p {
@@ -93,7 +97,6 @@ input {
 }
 
 .addTask-Topper {
-  // position: absolute  ;
   margin: 0;
   > .addTaskTopper-right {
     display: flex;
@@ -132,7 +135,6 @@ option {
   width: 100%;
   height: 100vh;
   background-color: rgba(black, 0.4);
-  // opacity: 10%;
 
   display: flex;
   justify-content: center;
@@ -145,14 +147,17 @@ option {
 }
 .ModalTask-inner {
   position: absolute;
+  display: flex;
+  align-items: center;
   padding: 1rem;
   right: 1.2rem;
+  justify-content: center;
   overflow-y: hidden;
   bottom: 100px;
-  // bottom: 6rem;
   border-radius: 5px;
   max-width: 734px;
-  max-height: 80vh;
+  min-width: 275px;
+  max-height: 78vh;
   min-height: 45vh;
   background-color: white;
 }
@@ -310,13 +315,9 @@ svg {
   }
 }
 .dropdown {
-  // position: absolute;
-
   .Delete {
-    // display: block;
     color: $indicator-red;
     border: solid 1px $primary-grey;
-    // position: absolute;
     margin-left: -3em;
     z-index: 2;
   }
@@ -418,7 +419,6 @@ svg {
   display: none;
 }
 
-// button ripple effect
 .ripple-blue {
   background-position: center;
   transition: background 0.8s;
@@ -449,13 +449,10 @@ svg {
   transition: background 0s;
 }
 
-// InboxItems
-
 .container-item {
   display: block;
   float: right;
   justify-content: space-around;
-  // padding: 1.375rem;
 }
 .column {
   display: flex;
@@ -595,6 +592,7 @@ svg {
   .ModalTask-inner {
     position: absolute;
     right: 0.3rem;
+    justify-content: center;
     bottom: 100px;
     // width: 84vw;
     overflow-y: hidden;
@@ -662,7 +660,7 @@ svg {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 
     float: right;
   }
@@ -692,8 +690,6 @@ svg {
     width: 100%;
     height: 100vh;
     background-color: rgba(black, 0.4);
-    // opacity: 10%;
-
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -708,9 +704,8 @@ svg {
     padding: 0.6rem;
     right: 0.3rem;
     bottom: 100px;
-    // bottom: 6rem;
-    // width: 84vw;
     overflow: hidden;
+    justify-content: center;
     border-radius: 5px;
     max-width: 88vw;
     max-height: 70vh;

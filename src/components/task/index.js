@@ -107,7 +107,7 @@ const Task = ({
                 </div>
               </div>
               <div className="taskTopper-right">
-                <p className="limit">{setInterval(date)}</p>
+                {done ? null : <p className="limit">{setInterval(date)}</p>}
                 <p>{date}</p>
                 <button
                   className="no-box no-border"

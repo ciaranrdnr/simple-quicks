@@ -48,6 +48,12 @@ input.Task.Title.addTask.typeBar {
   margin-left: 0.6rem;
 }
 
+.taskValue-top {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .Task.Title {
   min-width: 250px;
 }
@@ -105,6 +111,9 @@ input.Task.Title.addTask.typeBar {
       -ms-flex-direction: row;
           flex-direction: row;
   min-width: 300px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -190,13 +199,23 @@ option {
 
 .ModalTask-inner {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 1rem;
   right: 1.2rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   overflow-y: hidden;
   bottom: 100px;
   border-radius: 5px;
   max-width: 734px;
-  max-height: 80vh;
+  min-width: 275px;
+  max-height: 78vh;
   min-height: 45vh;
   background-color: white;
 }
@@ -789,6 +808,9 @@ svg.icon-clock.blue > path {
   .ModalTask-inner {
     position: absolute;
     right: 0.3rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     bottom: 100px;
     overflow-y: hidden;
     border-radius: 5px;
@@ -890,9 +912,9 @@ svg.icon-clock.blue > path {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
     float: right;
   }
   .taskTopper > .taskTopper-left {
@@ -953,6 +975,9 @@ svg.icon-clock.blue > path {
     right: 0.3rem;
     bottom: 100px;
     overflow: hidden;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     border-radius: 5px;
     max-width: 88vw;
     max-height: 70vh;
