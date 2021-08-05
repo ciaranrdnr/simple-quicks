@@ -41,24 +41,26 @@ const AddTask = ({ handleAddTask }) => {
   if (showNew === true) {
     return (
       <form onSubmit={onEnterPress}>
-        <div className="container-item column white border-bottom">
-          <div className="item row">
-            <div className="row">
-              <IconBox />
+        <div className="addTask white border-bottom">
+          <div className="addTask-Topper">
+            <div className="addTaskTopper-left">
+              <div className="">
+                <IconBox />
+              </div>
+              <div className="">
+                <TypeBar
+                  ph="Task Title"
+                  btn="none"
+                  class="addTask"
+                  width="400"
+                  value={title}
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                  }}
+                />
+              </div>
             </div>
-            <div className="row">
-              <TypeBar
-                ph="Task Title"
-                btn="none"
-                class="addTask"
-                width="400"
-                value={title}
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                }}
-              />
-            </div>
-            <div className="space row ">
+            <div className="taskTopper-right">
               <button
                 className="no-box no-border"
                 onClick={(e) => {
@@ -95,7 +97,6 @@ const AddTask = ({ handleAddTask }) => {
           </div>
           {showValue ? (
             <div className="row start value">
-              <div className="row empty"></div>
               <div className="column">
                 <div className="row item">
                   <IconClock />

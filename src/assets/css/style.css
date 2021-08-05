@@ -12,8 +12,8 @@ body {
 }
 
 .border-bottom {
+  border-top: sold 1px #828282 !important;
   border-bottom: solid 1px #828282 !important;
-  margin: 0;
 }
 
 p {
@@ -44,7 +44,43 @@ input {
 }
 
 input.Task.Title.addTask.typeBar {
-  width: 395px;
+  width: 350px;
+  margin-left: 0.6rem;
+}
+
+.taskTopper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.taskTopper > .taskTopper-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  min-width: 300px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  float: right;
+}
+
+.taskTopper > .taskTopper-right > p {
+  padding: 0 1rem;
 }
 
 .typeBar {
@@ -115,6 +151,7 @@ option {
   position: absolute;
   padding: 1rem;
   right: 1.2rem;
+  overflow-y: hidden;
   bottom: 100px;
   border-radius: 5px;
   max-width: 734px;
@@ -286,10 +323,39 @@ svg.icon-clock.blue > path {
   fill: #2f80ed;
 }
 
+.addTask-Topper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.6rem;
+}
+
+.addTask-Topper > .addTaskTopper-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .dropdown .Delete {
   color: #eb5757;
   border: solid 1px #4f4f4f;
-  position: absolute;
   margin-left: -3em;
   z-index: 2;
 }
@@ -446,9 +512,8 @@ svg.icon-clock.blue > path {
 }
 
 .container-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
+  float: right;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
@@ -464,6 +529,33 @@ svg.icon-clock.blue > path {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+}
+
+.taskTopper-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.taskTopper-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  min-width: 320px;
 }
 
 .row {
@@ -548,6 +640,7 @@ svg.icon-clock.blue > path {
 
 .item > .space {
   margin: 0;
+  display: block;
   float: right;
 }
 
@@ -561,6 +654,40 @@ svg.icon-clock.blue > path {
   body {
     font-size: 14px;
   }
+  .taskTopper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap-reverse;
+        flex-wrap: wrap-reverse;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .taskTopper > .taskTopper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .taskTopper > .taskTopper > p {
+    padding: 0 1rem;
+  }
+  div.addTask {
+    width: auto;
+  }
   input {
     text-overflow: ellipsis !important;
     overflow: hidden !important;
@@ -572,7 +699,7 @@ svg.icon-clock.blue > path {
   textarea {
     font-family: "Lato", sans-serif;
     font-size: 1rem;
-    min-width: 100px;
+    min-width: 90px;
     max-width: 50vw;
     text-overflow: ellipsis !important;
     overflow: hidden !important;
@@ -639,7 +766,6 @@ svg.icon-clock.blue > path {
             align-items: center;
     padding: 0.625rem 1rem;
     position: relative;
-    width: 10vh;
     font-family: "Lato", sans-serif;
     font-size: 1rem;
     height: 2.5rem;
@@ -655,6 +781,18 @@ svg.icon-clock.blue > path {
 }
 
 @media screen and (max-width: 330px) {
+  .taskTopper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
   body {
     font-size: 12px;
   }

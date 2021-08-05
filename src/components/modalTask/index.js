@@ -99,8 +99,8 @@ const ModalTask = ({ showTask, setShowTask }) => {
     <>
       {showTask ? (
         <div className="background" ref={modalRef} onClick={closeModal}>
-          <animated.div style={animation}>
-            <div className="ModalTask-inner">
+          <div className="ModalTask-inner">
+            <animated.div style={animation}>
               <div className="ModalTask-top">
                 <select
                   value={selectedClient}
@@ -131,8 +131,8 @@ const ModalTask = ({ showTask, setShowTask }) => {
                   handleDeleteTask={deleteTask}
                 />
               </div>
-            </div>
-          </animated.div>
+            </animated.div>
+          </div>
         </div>
       ) : null}
     </>

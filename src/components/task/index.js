@@ -64,47 +64,49 @@ const Task = ({
     <>
       {notNull ? (
         <form onSubmit={() => onEnterPress}>
-          <div className="container-item column white border-bottom">
-            <div className="item row">
-              <div className="row">
-                <button
-                  type=""
-                  className="no-box no-border"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setChecked(!checked);
-                    handleEditTask(id, t, desc, d, !checked);
-                  }}
-                >
-                  {checked ? <IconCheckBox /> : <IconBox />}
-                </button>
-              </div>
-              <div className="row">
-                {checked ? (
-                  <TypeBar
-                    ph="Task Title"
-                    btn="none"
-                    class="no-box bold done"
-                    onChange={(e) => {
-                      setT(e.target.value);
+          <div className="container-item white border-bottom">
+            <div className="taskTopper">
+              <div className="taskTopper-left">
+                <div>
+                  <button
+                    type=""
+                    className="no-box no-border"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setChecked(!checked);
+                      handleEditTask(id, t, desc, d, !checked);
                     }}
-                    width="300"
-                    value={t}
-                  />
-                ) : (
-                  <TypeBar
-                    ph="Task Title"
-                    btn="none"
-                    class="no-box bold"
-                    onChange={(e) => {
-                      setT(e.target.value);
-                    }}
-                    width="300"
-                    value={t}
-                  />
-                )}
+                  >
+                    {checked ? <IconCheckBox /> : <IconBox />}
+                  </button>
+                </div>
+                <div>
+                  {checked ? (
+                    <TypeBar
+                      ph="Task Title"
+                      btn="none"
+                      class="no-box bold done"
+                      onChange={(e) => {
+                        setT(e.target.value);
+                      }}
+                      width="300"
+                      value={t}
+                    />
+                  ) : (
+                    <TypeBar
+                      ph="Task Title"
+                      btn="none"
+                      class="no-box bold"
+                      onChange={(e) => {
+                        setT(e.target.value);
+                      }}
+                      width="300"
+                      value={t}
+                    />
+                  )}
+                </div>
               </div>
-              <div className="space row ">
+              <div className="taskTopper-right">
                 <p className="limit">{setInterval(date)}</p>
                 <p>{date}</p>
                 <button
