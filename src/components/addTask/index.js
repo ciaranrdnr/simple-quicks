@@ -9,7 +9,7 @@ import Btn from "../btn";
 import TypeBar from "../typeBar/";
 import { useState } from "react";
 
-const AddTask = ({ handleAddTask }) => {
+const AddTask = ({ handleAddTask, type }) => {
   const now = new Date();
   const Y = now.getFullYear();
   let M = now.getMonth();
@@ -86,7 +86,6 @@ const AddTask = ({ handleAddTask }) => {
                     color="white"
                     ripple="white"
                     onClick={(e) => {
-                      //   handleDeleteTask(id);
                       e.preventDefault();
                       setShowNew(!showNew);
                     }}
@@ -132,7 +131,7 @@ const AddTask = ({ handleAddTask }) => {
                       (title.trim().length > 0) &
                       (description.trim().length > 0)
                     ) {
-                      handleAddTask(title, description, date);
+                      handleAddTask(title, type, description, date);
                       setDescription("");
                       setTitle("");
                       setDate(`${Y}-${M}-${D}`);

@@ -28,6 +28,7 @@ const setInterval = (date) => {
 const Task = ({
   id,
   title,
+  type,
   description,
   date,
   done,
@@ -53,6 +54,7 @@ const Task = ({
     if (
       id !== "" ||
       title !== "" ||
+      type !== "" ||
       description !== "" ||
       date !== "" ||
       done !== ""
@@ -64,7 +66,7 @@ const Task = ({
     <>
       {notNull ? (
         <form onSubmit={() => onEnterPress}>
-          <div className="container-item white border-bottom">
+          <div className="addTask white border-bottom">
             <div className="taskTopper">
               <div className="taskTopper-left">
                 <div>

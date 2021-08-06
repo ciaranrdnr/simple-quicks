@@ -63,7 +63,7 @@ input {
   align-items: center;
 }
 .Task.Title {
-  min-width: 250px;
+  min-width: 25vw;
 }
 .task-value,
 .addTask-value {
@@ -72,7 +72,7 @@ input {
   .addTaskValue-top,
   .addTaskValue-bottom {
     display: flex;
-    padding: 0.6rem;
+    padding: 0.4rem;
     flex-direction: row;
     .typeBar {
       align-items: center;
@@ -83,6 +83,15 @@ input {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 0.2rem;
+  justify-content: space-between;
+  > .taskTopper-left,
+  > .addTaskTopper-left {
+    justify-content: flex-start;
+    button {
+      padding: 0;
+    }
+  }
   > .taskTopper-right {
     display: flex;
     flex-direction: row;
@@ -95,7 +104,15 @@ input {
     }
   }
 }
-
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p {
+    text-align: center;
+  }
+}
 .addTask-Topper {
   margin: 0;
   > .addTaskTopper-right {
@@ -145,10 +162,16 @@ option {
   margin-bottom: 1rem;
   justify-content: space-between;
 }
+.emptyTask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 12vh;
+}
 .ModalTask-inner {
   position: absolute;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   padding: 1rem;
   right: 1.2rem;
   justify-content: center;
@@ -158,15 +181,14 @@ option {
   max-width: 734px;
   min-width: 275px;
   max-height: 78vh;
-  min-height: 45vh;
+  min-height: 25vh;
   background-color: white;
 }
 .ModalTask-bottom {
   border-radius: 5px;
   overflow-y: scroll;
   max-width: 734px;
-  max-height: 72vh;
-  min-height: 5vh;
+  max-height: 68vh;
   background-color: white;
 }
 .no-box {
@@ -529,9 +551,16 @@ svg {
   }
 }
 
+.task-value,
+.addTask-value {
+  margin-left: 30px;
+}
 @media screen and (max-width: 450px) {
   body {
     font-size: 14px;
+  }
+  .task-value {
+    margin-left: 0;
   }
   .addTask-Topper {
     display: flex;
@@ -543,7 +572,20 @@ svg {
     flex-wrap: wrap-reverse;
     flex-direction: column-reverse;
     align-items: flex-start;
-
+    > .taskTopper-right {
+      display: flex;
+      flex-direction: row;
+      min-width: -webkit-fill-available;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .taskTopper-left {
+      min-width: -webkit-fill-available;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+    }
     > p {
       padding: 0 1rem;
     }
@@ -637,7 +679,7 @@ svg {
   .task-value .taskValue-bottom,
   .task-value .task-value .taskValue-top {
     display: flex;
-    padding: 0.6rem;
+    padding: 0.2rem;
     flex-direction: row;
     justify-content: flex-start;
   }
@@ -666,8 +708,8 @@ svg {
   }
   .taskTopper > .taskTopper-left {
     display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
+    flex-direction: row;
+    align-items: left;
     justify-content: flex-start;
 
     float: left;
@@ -699,6 +741,15 @@ svg {
     margin-bottom: 1rem;
     justify-content: space-between;
   }
+  .loader {
+    display: flex;
+    flex: auto;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+  }
+
   .ModalTask-inner {
     position: absolute;
     padding: 0.6rem;
@@ -708,15 +759,16 @@ svg {
     justify-content: center;
     border-radius: 5px;
     max-width: 88vw;
-    max-height: 70vh;
+    max-height: 72vh;
     min-height: 45vh;
     background-color: white;
   }
   .ModalTask-bottom {
     border-radius: 5px;
     overflow-y: scroll;
-    max-height: 72vh;
+    max-height: 60vh;
     min-height: 5vh;
+    max-width: 90vw;
     background-color: white;
   }
 }

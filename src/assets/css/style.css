@@ -55,7 +55,7 @@ input.Task.Title.addTask.typeBar {
 }
 
 .Task.Title {
-  min-width: 250px;
+  min-width: 25vw;
 }
 
 .task-value .taskValue-top,
@@ -69,7 +69,7 @@ input.Task.Title.addTask.typeBar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 0.6rem;
+  padding: 0.4rem;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -100,6 +100,22 @@ input.Task.Title.addTask.typeBar {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0.2rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.taskTopper > .taskTopper-left,
+.taskTopper > .addTaskTopper-left {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.taskTopper > .taskTopper-left button,
+.taskTopper > .addTaskTopper-left button {
+  padding: 0;
 }
 
 .taskTopper > .taskTopper-right {
@@ -122,6 +138,26 @@ input.Task.Title.addTask.typeBar {
 
 .taskTopper > .taskTopper-right > p {
   padding: 0 1rem;
+}
+
+.loader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.loader p {
+  text-align: center;
 }
 
 .addTask-Topper {
@@ -197,14 +233,27 @@ option {
           justify-content: space-between;
 }
 
+.emptyTask {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 12vh;
+}
+
 .ModalTask-inner {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   padding: 1rem;
   right: 1.2rem;
   -webkit-box-pack: center;
@@ -216,7 +265,7 @@ option {
   max-width: 734px;
   min-width: 275px;
   max-height: 78vh;
-  min-height: 45vh;
+  min-height: 25vh;
   background-color: white;
 }
 
@@ -224,8 +273,7 @@ option {
   border-radius: 5px;
   overflow-y: scroll;
   max-width: 734px;
-  max-height: 72vh;
-  min-height: 5vh;
+  max-height: 68vh;
   background-color: white;
 }
 
@@ -727,9 +775,17 @@ svg.icon-clock.blue > path {
   font-size: 0.875rem;
 }
 
+.task-value,
+.addTask-value {
+  margin-left: 30px;
+}
+
 @media screen and (max-width: 450px) {
   body {
     font-size: 14px;
+  }
+  .task-value {
+    margin-left: 0;
   }
   .addTask-Topper {
     display: -webkit-box;
@@ -756,6 +812,38 @@ svg.icon-clock.blue > path {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
+  }
+  .taskTopper > .taskTopper-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    min-width: -webkit-fill-available;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .taskTopper .taskTopper-left {
+    min-width: -webkit-fill-available;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
   }
   .taskTopper > p {
     padding: 0 1rem;
@@ -862,7 +950,7 @@ svg.icon-clock.blue > path {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    padding: 0.6rem;
+    padding: 0.2rem;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -922,12 +1010,12 @@ svg.icon-clock.blue > path {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: left;
+        -ms-flex-align: left;
+            align-items: left;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
@@ -969,6 +1057,21 @@ svg.icon-clock.blue > path {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
+  .loader {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex: auto;
+            flex: auto;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
   .ModalTask-inner {
     position: absolute;
     padding: 0.6rem;
@@ -980,15 +1083,16 @@ svg.icon-clock.blue > path {
             justify-content: center;
     border-radius: 5px;
     max-width: 88vw;
-    max-height: 70vh;
+    max-height: 72vh;
     min-height: 45vh;
     background-color: white;
   }
   .ModalTask-bottom {
     border-radius: 5px;
     overflow-y: scroll;
-    max-height: 72vh;
+    max-height: 60vh;
     min-height: 5vh;
+    max-width: 90vw;
     background-color: white;
   }
 }

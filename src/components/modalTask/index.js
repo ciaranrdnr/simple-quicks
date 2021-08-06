@@ -12,35 +12,51 @@ const ModalTask = ({ showTask, setShowTask }) => {
   const [loading, setLoading] = useState(false);
   const [didMount, setDidMount] = useState(false);
   const [showNewTask, setShowNewTask] = useState(false);
-  const [selectedClient, setSelectedClient] = useState("");
+  const [selectedClient, setSelectedClient] = useState("All Tasks");
   const [tasks, setTasks] = useState([
     {
       id: nanoid(),
       title: "Title",
+      type: "My Tasks",
       description: "Description",
       date: "2021-08-25",
     },
   ]);
-
+  const [filteredTasks, setFilteredTasks] = useState(tasks);
   const getAPI = () => {
     API.getTasksAPI().then((res) => {
       setTasks(res);
+      setFilteredTasks(res);
     });
   };
+
+  const filterType = (x) => {
+    let filtered;
+    if (x !== "All Tasks") {
+      filtered = tasks.filter((task) => task.type === x);
+      setFilteredTasks(filtered);
+    } else {
+      setFilteredTasks(tasks);
+    }
+  };
+
   const postAPI = (data) => {
     API.postTaskAPI(data).then((res) => {
       getAPI();
     });
   };
+
   const updateAPI = (data) => {
     API.updateTaskAPI(data, data.id).then((res) => {
       getAPI();
     });
   };
-  const addTask = (title, description, date) => {
+
+  const addTask = (title, type, description, date) => {
     const newTask = {
       id: nanoid(),
       title: title,
+      type: type,
       description: description,
       date: date,
       done: false,
@@ -53,6 +69,7 @@ const ModalTask = ({ showTask, setShowTask }) => {
       getAPI();
     });
   };
+
   const editTask = (key, title, description, date, done) => {
     const editedTask = {
       id: key,
@@ -69,6 +86,7 @@ const ModalTask = ({ showTask, setShowTask }) => {
       setShowTask(false);
     }
   };
+
   const keyPress = useCallback(
     (e) => {
       if (e.key === "Escape" && showTask) {
@@ -90,12 +108,12 @@ const ModalTask = ({ showTask, setShowTask }) => {
   `;
 
   useEffect(() => {
+    getAPI({});
+    document.addEventListener("keydown", keyPress);
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
-    document.addEventListener("keydown", keyPress);
-    getAPI({});
+    }, 1000);
     setDidMount(true);
     return () => {
       document.removeEventListener("keydown", keyPress);
@@ -106,56 +124,57 @@ const ModalTask = ({ showTask, setShowTask }) => {
     return null;
   } else {
     return (
-      // <ClipLoader color={"#4f4f4f"} loading={loading} size={150} />
-
       <>
         {showTask ? (
           <div className="background" ref={modalRef} onClick={closeModal}>
             <div className="ModalTask-inner">
-              {loading ? (
-                <div>
-                  <GridLoader
-                    color={"#4f4f4f"}
-                    css={override}
-                    loading={loading}
-                    size={15}
+              <animated.div style={animation}>
+                <div className="ModalTask-top">
+                  <select
+                    value={selectedClient}
+                    onChange={(e) => {
+                      setSelectedClient(e.target.value);
+                      filterType(e.target.value);
+                    }}
+                  >
+                    <option value="All Tasks">All Tasks</option>
+                    <option value="My Tasks">My Tasks</option>
+                    <option value="Personal Errands">Personal Errands</option>
+                    <option value="Urgent To-Do">Urgent To-Do</option>
+                  </select>
+                  <Btn
+                    color="blue"
+                    ripple="blue"
+                    title="New Task"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowNewTask(!showNewTask);
+                    }}
                   />
-                  <p>Loading Task List ...</p>
                 </div>
-              ) : (
-                <animated.div style={animation}>
-                  <div className="ModalTask-top">
-                    <select
-                      value={selectedClient}
-                      onChange={(e) => {
-                        setSelectedClient(e.target.value);
-                      }}
-                    >
-                      <option value="My Tasks">My Tasks</option>
-                      <option value="Personal Errands">Personal Errands</option>
-                      <option value="Urgent To-Do">Urgent To-Do</option>
-                    </select>
-                    <Btn
-                      color="blue"
-                      ripple="blue"
-                      title="New Task"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setShowNewTask(!showNewTask);
-                      }}
+                {loading ? (
+                  <div className="loader">
+                    <GridLoader
+                      color={"#828282"}
+                      css={override}
+                      loading={loading}
+                      size={15}
                     />
+                    <p>Loading Task List ...</p>
                   </div>
+                ) : (
                   <div className="ModalTask-bottom">
                     <TaskList
                       showNewTask={showNewTask}
-                      tasks={tasks}
+                      tasks={filteredTasks}
+                      type={selectedClient}
                       handleAddTask={addTask}
                       handleEditTask={editTask}
                       handleDeleteTask={deleteTask}
                     />
                   </div>
-                </animated.div>
-              )}
+                )}
+              </animated.div>
             </div>
           </div>
         ) : null}

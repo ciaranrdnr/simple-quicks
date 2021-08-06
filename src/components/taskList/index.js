@@ -1,39 +1,45 @@
-// import { useState } from "react";
 import Task from "../task";
 import AddTask from "../addTask";
 
 const TaskList = ({
   showNewTask,
   tasks,
+  type,
   handleAddTask,
   handleEditTask,
   handleDeleteTask,
 }) => {
-  return (
-    <div className="tasks-list">
-      {showNewTask ? <AddTask handleAddTask={handleAddTask} /> : null}
+  if (tasks.length === 0) {
+    return (
+      <div className="emptyTask">
+        <p>{type} is empty :(</p>
+      </div>
+    );
+  } else {
+    return (
+      <div className="tasks-list">
+        {showNewTask ? (
+          <AddTask handleAddTask={handleAddTask} type={type} />
+        ) : null}
 
-      {tasks
-        .slice(0)
-        .reverse()
-        .map((task) => (
-          <Task
-            key={task.id}
-            id={task.id}
-            title={task.title}
-            description={task.description}
-            date={task.date}
-            done={task.done}
-            handleEditTask={handleEditTask}
-            //   handleAddTask={handleAddTask}
-            handleDeleteTask={handleDeleteTask}
-          />
-        ))}
-      {/* <TaskItems title=" " date="09/07/21" limit="4" />
-      <TaskItems title="" date="01/08/21" limit="1" />
-      <TaskItems title="" date="09/07/21" limit="4" />
-      <TaskItems title="" date="09/07/21" limit="4" /> */}
-    </div>
-  );
+        {tasks
+          .slice(0)
+          .reverse()
+          .map((task) => (
+            <Task
+              key={task.id}
+              id={task.id}
+              title={task.title}
+              type={task.type}
+              description={task.description}
+              date={task.date}
+              done={task.done}
+              handleEditTask={handleEditTask}
+              handleDeleteTask={handleDeleteTask}
+            />
+          ))}
+      </div>
+    );
+  }
 };
 export default TaskList;
