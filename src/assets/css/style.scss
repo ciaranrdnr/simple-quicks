@@ -22,6 +22,38 @@ $stickers-4: #afebdb;
 $stickers-5: #afebdb;
 $stickers-6: #f9e0fd;
 
+@keyframes inModal {
+  from {
+    opacity: 0;
+    // width: 0;
+    // height: 0;
+  }
+  to {
+    opacity: 1;
+    // height: 25vh;
+    // width: 25vw;
+  }
+}
+@keyframes btnIn {
+  from {
+    margin-right: -4rem;
+    opacity: 0;
+  }
+  to {
+    margin-right: 0.6rem;
+    opacity: 1;
+  }
+}
+@keyframes btnOut {
+  from {
+    margin-right: 0.6rem;
+    opacity: 1;
+  }
+  to {
+    margin-right: -4rem;
+    opacity: 0;
+  }
+}
 html,
 body {
   font-family: "Lato", sans-serif;
@@ -159,9 +191,11 @@ option {
   height: 100vh;
   background-color: rgba(black, 0.4);
 
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: flex-start;
+
+  animation-timing-function: ease-in-out;
 }
 .ModalTask-top {
   display: flex;
@@ -194,6 +228,7 @@ option {
   max-height: 68vh;
   min-height: 10vh;
   background-color: white;
+  animation: inModal 0.6s linear;
 }
 .no-box {
   border: 1px solid white;
@@ -345,6 +380,7 @@ svg {
 .btn-regular {
   height: 2.5rem;
   width: auto;
+
   &.blue {
     background-color: $primary-blue;
   }
@@ -394,6 +430,7 @@ svg {
   height: 4.2rem;
   width: 4.2rem;
   margin-right: 1rem;
+  z-index: 9;
 }
 .btnC-Task {
   height: 3.8rem;
@@ -401,6 +438,7 @@ svg {
   background-color: $primary-white;
   margin-top: 0.4rem;
 }
+
 .btnC-Inbox {
   height: 3.8rem;
   width: 3.8rem;
@@ -411,15 +449,17 @@ svg {
   margin-right: 0.6rem;
   color: $primary-white;
   text-align: center;
+  animation: btnIn 0.3s ease-out;
 }
 #Task {
   color: $primary-white;
   text-align: center;
   margin-right: 0.6rem;
+  animation: btnIn 0.3s ease-out;
 }
 .button-group {
   opacity: 1;
-  transition: opacity 1s;
+  transition: opacity 5s;
 }
 .hide {
   opacity: 0;

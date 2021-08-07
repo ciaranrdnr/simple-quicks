@@ -1,15 +1,14 @@
 import "./assets/css/style.css";
 import BtnGroup from "./components/btnGroup";
 import ModalTask from "./components/modalTask";
-import { useEffect, useState, useRef } from "react";
-
+import { useEffect, useState } from "react";
 function App() {
   const [showTask, setShowTask] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
+
   useEffect(() => {}, []);
-  const btnRef = useRef();
   return (
-    <div className="App" ref={btnRef}>
+    <div className="App" key={showTask}>
       {showTask ? (
         <ModalTask
           showTask={showTask}

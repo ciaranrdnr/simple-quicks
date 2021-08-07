@@ -1,3 +1,65 @@
+@-webkit-keyframes inModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes inModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes btnIn {
+  from {
+    margin-right: -4rem;
+    opacity: 0;
+  }
+  to {
+    margin-right: 0.6rem;
+    opacity: 1;
+  }
+}
+
+@keyframes btnIn {
+  from {
+    margin-right: -4rem;
+    opacity: 0;
+  }
+  to {
+    margin-right: 0.6rem;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes btnOut {
+  from {
+    margin-right: 0.6rem;
+    opacity: 1;
+  }
+  to {
+    margin-right: -4rem;
+    opacity: 0;
+  }
+}
+
+@keyframes btnOut {
+  from {
+    margin-right: 0.6rem;
+    opacity: 1;
+  }
+  to {
+    margin-right: -4rem;
+    opacity: 0;
+  }
+}
+
 html,
 body {
   font-family: "Lato", sans-serif;
@@ -221,15 +283,15 @@ option {
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
 }
 
 .ModalTask-top {
@@ -278,6 +340,8 @@ option {
   max-height: 68vh;
   min-height: 10vh;
   background-color: white;
+  -webkit-animation: inModal 0.6s linear;
+          animation: inModal 0.6s linear;
 }
 
 .no-box {
@@ -566,6 +630,7 @@ svg.icon-clock.blue > path {
   height: 4.2rem;
   width: 4.2rem;
   margin-right: 1rem;
+  z-index: 9;
 }
 
 .btnC-Task {
@@ -586,18 +651,22 @@ svg.icon-clock.blue > path {
   margin-right: 0.6rem;
   color: #e0e0e0;
   text-align: center;
+  -webkit-animation: btnIn 0.3s ease-out;
+          animation: btnIn 0.3s ease-out;
 }
 
 #Task {
   color: #e0e0e0;
   text-align: center;
   margin-right: 0.6rem;
+  -webkit-animation: btnIn 0.3s ease-out;
+          animation: btnIn 0.3s ease-out;
 }
 
 .button-group {
   opacity: 1;
-  -webkit-transition: opacity 1s;
-  transition: opacity 1s;
+  -webkit-transition: opacity 5s;
+  transition: opacity 5s;
 }
 
 .hide {
