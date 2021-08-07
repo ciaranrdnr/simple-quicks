@@ -1,13 +1,13 @@
-import { ReactComponent as IconClock } from "../../assets/icons/clock.svg";
-import { ReactComponent as IconPencil } from "../../assets/icons/pencil.svg";
 import { ReactComponent as IconExpand } from "../../assets/icons/expand.svg";
 import { ReactComponent as IconMinimize } from "../../assets/icons/minimize.svg";
 import { ReactComponent as IconBox } from "../../assets/icons/box.svg";
 import { ReactComponent as IconDots } from "../../assets/icons/three-dots-black.svg";
+import IconPencil from "../iconPencil";
+import IconClock from "../iconClock";
 import Btn from "../btn";
 
 import TypeBar from "../typeBar/";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AddTask = ({ handleAddTask, type }) => {
   const now = new Date();
@@ -23,6 +23,8 @@ const AddTask = ({ handleAddTask, type }) => {
   }
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
+  const [tipe, setTipe] = useState(type);
+  const [colorDate, setColorDate] = useState("grey");
   const [date, setDate] = useState(`${Y}-${M}-${D}`);
   const [showDelete, setShowDelete] = useState(false);
   const [showNew, setShowNew] = useState(true);
@@ -30,14 +32,21 @@ const AddTask = ({ handleAddTask, type }) => {
   const onEnterPress = (e) => {
     if (e.keyCode === 13 && e.ctrlKey === true) {
       e.preventDefault();
-      if ((title.trim().length > 0) & (description.trim().length > 0)) {
-        handleAddTask(title, description, date);
+      if (title.trim().length > 0) {
+        handleAddTask(title, tipe, description, date);
+        setShowNew(false);
         setDescription("");
         setTitle("");
         setDate(`${Y}-${M}-${D}`);
       }
     }
   };
+  useEffect(() => {
+    if (type === "All Tasks") {
+      setTipe("My Tasks");
+    }
+  }, [type]);
+
   if (showNew === true) {
     return (
       <form onSubmit={onEnterPress}>
@@ -97,7 +106,7 @@ const AddTask = ({ handleAddTask, type }) => {
           {showValue ? (
             <div className="addTask-value">
               <div className="addTaskValue-top">
-                <IconClock />
+                <IconClock color={colorDate} />
                 <TypeBar
                   ph="Set Date"
                   btn="none"
@@ -106,6 +115,15 @@ const AddTask = ({ handleAddTask, type }) => {
                   min={`${Y}-${M}-${D}`}
                   onChange={(e) => {
                     setDate(e.target.value);
+                    setColorDate("blue");
+                  }}
+                  onBlur={(e) => {
+                    e.preventDefault();
+                    if (tipe === "All Tasks" && title.trim().length > 0) {
+                      handleAddTask(title, "My Tasks", description, date);
+                    } else if (title.trim().length > 0) {
+                      handleAddTask(title, tipe, description, date);
+                    }
                   }}
                   width="220"
                 />
@@ -127,16 +145,20 @@ const AddTask = ({ handleAddTask, type }) => {
                   onKeyDown={onEnterPress}
                   onBlur={(e) => {
                     e.preventDefault();
+
                     if (
                       (title.trim().length > 0) &
                       (description.trim().length > 0)
                     ) {
-                      handleAddTask(title, type, description, date);
+                      if (tipe === "All Tasks") {
+                        handleAddTask(title, "My Tasks", description, date);
+                      } else {
+                        handleAddTask(title, tipe, description, date);
+                      }
                       setDescription("");
                       setTitle("");
                       setDate(`${Y}-${M}-${D}`);
                       setShowNew(false);
-                      alert("Added New Task");
                     }
                   }}
                 />

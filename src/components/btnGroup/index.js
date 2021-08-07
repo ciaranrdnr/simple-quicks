@@ -1,11 +1,8 @@
 import BtnCircle from "../btnCircle";
-import { useState } from "react";
-// icons
 import lightning from "../../assets/icons/lightning.svg";
 import Inbox from "../../assets/icons/chats-purple.svg";
 import Task from "../../assets/icons/task-orange.svg";
-const BtnGroup = (props) => {
-  const [show, setShow] = useState(false);
+const BtnGroup = ({ showBtn, setShowBtn, onClickTask, onClickInbox }) => {
   return (
     <div className="bottom-right">
       <BtnCircle
@@ -13,22 +10,22 @@ const BtnGroup = (props) => {
         title="lightning"
         ripple="blue"
         onClick={() => {
-          setShow(!show);
+          setShowBtn(!showBtn);
         }}
       />
-      {show ? (
+      {showBtn ? (
         <>
           <BtnCircle
             url={Inbox}
             title="Inbox"
             ripple="white"
-            onClick={props.onClickInbox}
+            onClick={onClickInbox}
           />
           <BtnCircle
             url={Task}
             title="Task"
             ripple="white"
-            onClick={props.onClickTask}
+            onClick={onClickTask}
           />
         </>
       ) : null}

@@ -8,6 +8,8 @@ const TypeBar = (props) => {
           className={`${props.ph} TypeBar`}
           value={props.value}
           onChange={props.onChange}
+          onBlur={props.onBlur}
+          readOnly={props.readOnly}
         ></input>
         <Btn title="Send" ripple="blue" />
       </div>
@@ -21,7 +23,9 @@ const TypeBar = (props) => {
         value={props.date}
         onChange={props.onChange}
         type={props.type}
+        onBlur={props.onBlur}
         min={props.min}
+        readOnly={props.readOnly}
       ></input>
     );
   } else {
@@ -32,7 +36,9 @@ const TypeBar = (props) => {
         value={props.value}
         onChange={props.onChange}
         onKeyDown={props.onKeyDown}
+        onBlur={props.onBlur}
         type={props.type}
+        readOnly={props.readOnly}
       ></input>
     );
   }

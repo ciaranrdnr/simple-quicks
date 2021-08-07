@@ -39,14 +39,19 @@ const Task = ({
   const [d, setD] = useState(date);
   const [desc, setDesc] = useState(description);
   const [showDelete, setShowDelete] = useState(false);
-  const [showValue, setShowValue] = useState(true);
+  const [showValue, setShowValue] = useState(false);
   const [checked, setChecked] = useState(done);
+  const cData = [title, date, description, done];
+
   const onEnterPress = (e) => {
     if (e.keyCode === 13 && e.ctrlKey === true) {
       e.preventDefault();
-
-      if ((t.trim().length > 0) & (desc.trim().length > 0)) {
-        handleEditTask(id, t, desc, d, checked);
+      if (
+        (t.trim().length > 0) & (cData[0] !== t || cData[1] !== d) ||
+        cData[2] !== desc ||
+        cData[3] !== checked
+      ) {
+        handleEditTask(id, t, type, desc, d, checked);
       }
     }
   };
@@ -76,7 +81,7 @@ const Task = ({
                     onClick={(e) => {
                       e.preventDefault();
                       setChecked(!checked);
-                      handleEditTask(id, t, desc, d, !checked);
+                      handleEditTask(id, t, type, desc, d, !checked);
                     }}
                   >
                     {checked ? <IconCheckBox /> : <IconBox />}
@@ -91,19 +96,34 @@ const Task = ({
                       onChange={(e) => {
                         setT(e.target.value);
                       }}
+                      onKeyDown={onEnterPress}
+                      onBlur={(e) => {
+                        e.preventDefault();
+                        if ((t.trim().length > 0) & (cData[0] !== t)) {
+                          handleEditTask(id, t, type, desc, d, checked);
+                        }
+                      }}
                       width="300"
                       value={t}
+                      readOnly={true}
                     />
                   ) : (
                     <TypeBar
                       ph="Task Title"
                       btn="none"
                       class="no-box bold"
+                      onKeyDown={onEnterPress}
                       onChange={(e) => {
                         setT(e.target.value);
                       }}
                       width="300"
                       value={t}
+                      onBlur={(e) => {
+                        e.preventDefault();
+                        if ((t.trim().length > 0) & (cData[0] !== t)) {
+                          handleEditTask(id, t, type, desc, d, checked);
+                        }
+                      }}
                     />
                   )}
                 </div>
@@ -155,6 +175,19 @@ const Task = ({
                     date={d}
                     onChange={(e) => {
                       setD(e.target.value);
+                      if (
+                        (t.trim().length > 0) &
+                        (cData[1] !== e.target.value)
+                      ) {
+                        handleEditTask(
+                          id,
+                          t,
+                          type,
+                          desc,
+                          e.target.value,
+                          checked
+                        );
+                      }
                     }}
                     width="220"
                   />
@@ -179,11 +212,8 @@ const Task = ({
                     onKeyDown={onEnterPress}
                     onBlur={(e) => {
                       e.preventDefault();
-                      if (
-                        (title.trim().length > 0) &
-                        (description.trim().length > 0)
-                      ) {
-                        handleEditTask(id, t, desc, d, checked);
+                      if ((t.trim().length > 0) & (cData[2] !== desc)) {
+                        handleEditTask(id, t, type, desc, d, checked);
                       }
                     }}
                   />

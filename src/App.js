@@ -1,15 +1,15 @@
 import "./assets/css/style.css";
-// components
 import BtnGroup from "./components/btnGroup";
 import ModalTask from "./components/modalTask";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 function App() {
   const [showTask, setShowTask] = useState(false);
+  const [showBtn, setShowBtn] = useState(false);
   useEffect(() => {}, []);
-
+  const btnRef = useRef();
   return (
-    <div className="App">
+    <div className="App" ref={btnRef}>
       {showTask ? (
         <ModalTask
           showTask={showTask}
@@ -21,11 +21,15 @@ function App() {
         />
       ) : null}
       <BtnGroup
+        showBtn={showBtn}
+        setShowBtn={setShowBtn}
         onClickTask={() => {
+          setShowBtn(!showBtn);
           setShowTask(!showTask);
         }}
         onClickInbox={(e) => {
           e.preventDefault();
+          setShowBtn(!showBtn);
           setShowTask(false);
         }}
       />

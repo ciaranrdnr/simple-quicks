@@ -33,7 +33,6 @@ p {
 .done {
   color: #828282;
   -webkit-text-decoration-line: line-through;
-  /* Safari */
   text-decoration-line: line-through;
 }
 
@@ -41,11 +40,20 @@ input {
   text-overflow: ellipsis !important;
   overflow: hidden !important;
   white-space: nowrap !important;
+  min-width: 190px;
 }
 
 input.Task.Title.addTask.typeBar {
   width: 350px;
   margin-left: 0.6rem;
+}
+
+input.Task.Title {
+  margin-left: 16px;
+}
+
+input.done:focus {
+  border-color: white;
 }
 
 .taskValue-top {
@@ -154,6 +162,7 @@ input.Task.Title.addTask.typeBar {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  min-width: auto;
 }
 
 .loader p {
@@ -248,12 +257,7 @@ option {
 
 .ModalTask-inner {
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  display: block;
   padding: 1rem;
   right: 1.2rem;
   -webkit-box-pack: center;
@@ -263,17 +267,16 @@ option {
   bottom: 100px;
   border-radius: 5px;
   max-width: 734px;
-  min-width: 275px;
+  min-width: 55vw;
   max-height: 78vh;
-  min-height: 25vh;
   background-color: white;
 }
 
 .ModalTask-bottom {
   border-radius: 5px;
   overflow-y: scroll;
-  max-width: 734px;
   max-height: 68vh;
+  min-height: 10vh;
   background-color: white;
 }
 
@@ -780,6 +783,13 @@ svg.icon-clock.blue > path {
   margin-left: 30px;
 }
 
+.task-value > .addTaskValue-top,
+.addTask-value > .addTaskValue-top {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 @media screen and (max-width: 450px) {
   body {
     font-size: 14px;
@@ -853,6 +863,9 @@ svg.icon-clock.blue > path {
     overflow: hidden !important;
     white-space: nowrap !important;
   }
+  input.Task.Title {
+    margin-left: 14px;
+  }
   input.Task.Title.addTask.typeBar {
     max-width: 48vw;
   }
@@ -894,17 +907,21 @@ svg.icon-clock.blue > path {
             justify-content: space-between;
   }
   .ModalTask-inner {
-    position: absolute;
+    display: block;
     right: 0.3rem;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     bottom: 100px;
     overflow-y: hidden;
     border-radius: 5px;
     max-width: 734px;
+    min-width: 75vw;
     max-height: 80vh;
-    min-height: 45vh;
+    min-height: 25vh;
     background-color: white;
   }
   .ModalTask-bottom {
@@ -936,6 +953,7 @@ svg.icon-clock.blue > path {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     border-radius: 5px;
+    margin-left: 16px;
   }
   .typeBar.Title:focus {
     border: 1px solid #828282;
@@ -1084,7 +1102,6 @@ svg.icon-clock.blue > path {
     border-radius: 5px;
     max-width: 88vw;
     max-height: 72vh;
-    min-height: 45vh;
     background-color: white;
   }
   .ModalTask-bottom {

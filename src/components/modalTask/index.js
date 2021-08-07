@@ -20,6 +20,7 @@ const ModalTask = ({ showTask, setShowTask }) => {
       type: "My Tasks",
       description: "Description",
       date: "2021-08-25",
+      done: false,
     },
   ]);
   const [filteredTasks, setFilteredTasks] = useState(tasks);
@@ -61,7 +62,9 @@ const ModalTask = ({ showTask, setShowTask }) => {
       date: date,
       done: false,
     };
+    alert("Added New Task");
     postAPI(newTask);
+    setSelectedClient("All Tasks");
   };
 
   const deleteTask = (id) => {
@@ -70,15 +73,17 @@ const ModalTask = ({ showTask, setShowTask }) => {
     });
   };
 
-  const editTask = (key, title, description, date, done) => {
+  const editTask = (key, title, type, description, date, done) => {
     const editedTask = {
       id: key,
       title: title,
+      type: type,
       description: description,
       date: date,
       done: done,
     };
     updateAPI(editedTask);
+    setSelectedClient("All Tasks");
   };
 
   const closeModal = (e) => {
@@ -113,7 +118,7 @@ const ModalTask = ({ showTask, setShowTask }) => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 1500);
     setDidMount(true);
     return () => {
       document.removeEventListener("keydown", keyPress);
@@ -160,7 +165,9 @@ const ModalTask = ({ showTask, setShowTask }) => {
                       loading={loading}
                       size={15}
                     />
-                    <p>Loading Task List ...</p>
+                    <div>
+                      <p>Loading Task List ...</p>
+                    </div>
                   </div>
                 ) : (
                   <div className="ModalTask-bottom">

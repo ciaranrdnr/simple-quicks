@@ -11,8 +11,14 @@ const TaskList = ({
 }) => {
   if (tasks.length === 0) {
     return (
-      <div className="emptyTask">
-        <p>{type} is empty :(</p>
+      <div className="tasks-list">
+        {showNewTask ? (
+          <AddTask handleAddTask={handleAddTask} type={type} />
+        ) : (
+          <div className="emptyTask">
+            <p>{type} is empty :(</p>
+          </div>
+        )}
       </div>
     );
   } else {
@@ -30,7 +36,7 @@ const TaskList = ({
               key={task.id}
               id={task.id}
               title={task.title}
-              type={task.type}
+              // type={task.type}
               description={task.description}
               date={task.date}
               done={task.done}
