@@ -7,7 +7,13 @@ import TaskList from "../taskList";
 import API from "../../services";
 import Btn from "../btn";
 import "react-dropdown/style.css";
-const ModalTask = ({ showTask, setShowTask }) => {
+const ModalTask = ({
+  showTask,
+  setShowTask,
+  setGuidence,
+  setShowMainBtn,
+  setShowTaskBtn,
+}) => {
   const modalRef = useRef();
   const [loading, setLoading] = useState(false);
   const [didMount, setDidMount] = useState(false);
@@ -89,6 +95,9 @@ const ModalTask = ({ showTask, setShowTask }) => {
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
       setShowTask(false);
+      setGuidence(true);
+      setShowMainBtn(true);
+      setShowTaskBtn(false);
     }
   };
 
@@ -96,9 +105,12 @@ const ModalTask = ({ showTask, setShowTask }) => {
     (e) => {
       if (e.key === "Escape" && showTask) {
         setShowTask(false);
+        setGuidence(true);
+        setShowMainBtn(true);
+        setShowTaskBtn(false);
       }
     },
-    [setShowTask, showTask]
+    [setShowTask, showTask, setGuidence, setShowMainBtn, setShowTaskBtn]
   );
   const animation = useSpring({
     config: {

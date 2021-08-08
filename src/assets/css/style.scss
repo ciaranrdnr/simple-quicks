@@ -25,13 +25,9 @@ $stickers-6: #f9e0fd;
 @keyframes inModal {
   from {
     opacity: 0;
-    // width: 0;
-    // height: 0;
   }
   to {
     opacity: 1;
-    // height: 25vh;
-    // width: 25vw;
   }
 }
 @keyframes btnIn {
@@ -54,14 +50,61 @@ $stickers-6: #f9e0fd;
     opacity: 0;
   }
 }
-html,
-body {
+
+@keyframes inBtnGroupTask {
+  0% {
+    flex-direction: row;
+  }
+  100% {
+    flex-direction: row;
+  }
+}
+@keyframes expandTask {
+  0% {
+    right: 150px;
+    width: 3.8rem;
+    height: 3.8rem;
+    background-color: white;
+  }
+  60% {
+    width: 4.2rem;
+    height: 4.2rem;
+    right: -5px;
+  }
+  100% {
+    right: 0px;
+    width: 4.2rem;
+    height: 4.2rem;
+    background-color: $indicatior-orange;
+  }
+}
+@keyframes rightInbox {
+  0% {
+    margin-right: 0px;
+  }
+  50% {
+    margin-right: -10px;
+  }
+  100% {
+    margin-right: 0px;
+  }
+}
+@keyframes orangeToWhite {
+  0% {
+    fill: $indicatior-orange;
+  }
+  100% {
+    fill: white;
+  }
+}
+.App {
   font-family: "Lato", sans-serif;
-  background-color: #fff;
+  background-color: $primary-grey;
   display: flex;
   width: 100vw;
+  height: 100vh;
   font-size: 16px;
-  background-image: url("../../BKG.png");
+  // background-image: url("../../BKG.png");
   background-size: auto;
 }
 .border-bottom {
@@ -71,6 +114,29 @@ body {
 p {
   color: $primary-grey;
 }
+
+.guidence {
+  position: absolute;
+  right: 100px;
+  bottom: 40px;
+  .arrow {
+    stroke-dasharray: 280;
+    stroke-dashoffset: 280;
+    animation: draw 2s infinite;
+    &.tail {
+      stroke-dashoffset: 280;
+      stroke-dasharray: 280;
+      animation: draw 2s infinite;
+      animation-delay: 1.2s;
+    }
+  }
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 .flex {
   display: flex;
 }
@@ -416,21 +482,52 @@ svg {
   box-shadow: 0px 4px 4px 0px #0000001a;
   overflow: hidden;
 }
-.bottom-right {
+.bottom-right,
+.btnGroup-Task {
   max-width: 100vw;
   margin: 0.6rem 0rem;
-  position: fixed;
+  position: absolute;
   right: 0;
   bottom: 0;
   display: flex;
   justify-content: flex-end;
   flex-direction: row-reverse;
 }
+
+.btnGroup-Task {
+  #btnG-Task > .btnG-Task {
+    position: absolute;
+    display: flex;
+    height: 4.2rem;
+    width: 4.2rem;
+    background-color: $indicatior-orange;
+    margin-right: 1rem;
+    animation: expandTask 0.4s ease-out;
+    > .iconTask > path {
+      fill: white;
+      animation: orangeToWhite 0.4s ease-in;
+    }
+  }
+  #btnG-Inbox {
+    position: absolute;
+    right: 84px;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    animation: rightInbox 0.4s ease-in-out;
+    > .btnG-Inbox {
+      height: 3.8rem;
+      width: 3.8rem;
+      background-color: $primary-white;
+      margin-right: 0.6rem;
+    }
+  }
+}
+
 .btnC-lightning {
   height: 4.2rem;
   width: 4.2rem;
   margin-right: 1rem;
-  z-index: 9;
 }
 .btnC-Task {
   height: 3.8rem;
@@ -464,6 +561,20 @@ svg {
 .hide {
   opacity: 0;
   display: none;
+}
+.ripple-orange {
+  background-position: $indicatior-orange;
+  transition: background 0.8s;
+}
+.ripple-orange:hover {
+  background: darken($indicatior-orange, 10%)
+    radial-gradient(circle, transparent 1%, darken($indicatior-orange, 10%) 1%)
+    center/15000%;
+}
+.ripple-orange:active {
+  background-color: lighten($indicatior-orange, 10%);
+  background-size: 100%;
+  transition: background 0s;
 }
 .ripple-blue {
   background-position: center;

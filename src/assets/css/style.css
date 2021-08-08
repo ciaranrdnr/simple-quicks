@@ -60,16 +60,125 @@
   }
 }
 
-html,
-body {
+@-webkit-keyframes inBtnGroupTask {
+  0% {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
+  }
+  100% {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
+  }
+}
+
+@keyframes inBtnGroupTask {
+  0% {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  100% {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+@-webkit-keyframes expandTask {
+  0% {
+    right: 150px;
+    width: 3.8rem;
+    height: 3.8rem;
+    background-color: white;
+  }
+  60% {
+    width: 4.2rem;
+    height: 4.2rem;
+    right: -5px;
+  }
+  100% {
+    right: 0px;
+    width: 4.2rem;
+    height: 4.2rem;
+    background-color: #f8b76b;
+  }
+}
+
+@keyframes expandTask {
+  0% {
+    right: 150px;
+    width: 3.8rem;
+    height: 3.8rem;
+    background-color: white;
+  }
+  60% {
+    width: 4.2rem;
+    height: 4.2rem;
+    right: -5px;
+  }
+  100% {
+    right: 0px;
+    width: 4.2rem;
+    height: 4.2rem;
+    background-color: #f8b76b;
+  }
+}
+
+@-webkit-keyframes rightInbox {
+  0% {
+    margin-right: 0px;
+  }
+  50% {
+    margin-right: -10px;
+  }
+  100% {
+    margin-right: 0px;
+  }
+}
+
+@keyframes rightInbox {
+  0% {
+    margin-right: 0px;
+  }
+  50% {
+    margin-right: -10px;
+  }
+  100% {
+    margin-right: 0px;
+  }
+}
+
+@-webkit-keyframes orangeToWhite {
+  0% {
+    fill: #f8b76b;
+  }
+  100% {
+    fill: white;
+  }
+}
+
+@keyframes orangeToWhite {
+  0% {
+    fill: #f8b76b;
+  }
+  100% {
+    fill: white;
+  }
+}
+
+.App {
   font-family: "Lato", sans-serif;
-  background-color: #fff;
+  background-color: #4f4f4f;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 100vw;
+  height: 100vh;
   font-size: 16px;
-  background-image: url("../../BKG.png");
   background-size: auto;
 }
 
@@ -80,6 +189,40 @@ body {
 
 p {
   color: #4f4f4f;
+}
+
+.guidence {
+  position: absolute;
+  right: 100px;
+  bottom: 40px;
+}
+
+.guidence .arrow {
+  stroke-dasharray: 280;
+  stroke-dashoffset: 280;
+  -webkit-animation: draw 2s infinite;
+          animation: draw 2s infinite;
+}
+
+.guidence .arrow.tail {
+  stroke-dashoffset: 280;
+  stroke-dasharray: 280;
+  -webkit-animation: draw 2s infinite;
+          animation: draw 2s infinite;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+
+@-webkit-keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 .flex {
@@ -608,10 +751,11 @@ svg.icon-clock.blue > path {
   overflow: hidden;
 }
 
-.bottom-right {
+.bottom-right,
+.btnGroup-Task {
   max-width: 100vw;
   margin: 0.6rem 0rem;
-  position: fixed;
+  position: absolute;
   right: 0;
   bottom: 0;
   display: -webkit-box;
@@ -626,11 +770,50 @@ svg.icon-clock.blue > path {
           flex-direction: row-reverse;
 }
 
+.btnGroup-Task #btnG-Task > .btnG-Task {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 4.2rem;
+  width: 4.2rem;
+  background-color: #f8b76b;
+  margin-right: 1rem;
+  -webkit-animation: expandTask 0.4s ease-out;
+          animation: expandTask 0.4s ease-out;
+}
+
+.btnGroup-Task #btnG-Task > .btnG-Task > .iconTask > path {
+  fill: white;
+  -webkit-animation: orangeToWhite 0.4s ease-in;
+          animation: orangeToWhite 0.4s ease-in;
+}
+
+.btnGroup-Task #btnG-Inbox {
+  position: absolute;
+  right: 84px;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-animation: rightInbox 0.4s ease-in-out;
+          animation: rightInbox 0.4s ease-in-out;
+}
+
+.btnGroup-Task #btnG-Inbox > .btnG-Inbox {
+  height: 3.8rem;
+  width: 3.8rem;
+  background-color: #e0e0e0;
+  margin-right: 0.6rem;
+}
+
 .btnC-lightning {
   height: 4.2rem;
   width: 4.2rem;
   margin-right: 1rem;
-  z-index: 9;
 }
 
 .btnC-Task {
@@ -672,6 +855,23 @@ svg.icon-clock.blue > path {
 .hide {
   opacity: 0;
   display: none;
+}
+
+.ripple-orange {
+  background-position: #f8b76b;
+  -webkit-transition: background 0.8s;
+  transition: background 0.8s;
+}
+
+.ripple-orange:hover {
+  background: #f69f3a radial-gradient(circle, transparent 1%, #f69f3a 1%) center/15000%;
+}
+
+.ripple-orange:active {
+  background-color: #facf9c;
+  background-size: 100%;
+  -webkit-transition: background 0s;
+  transition: background 0s;
 }
 
 .ripple-blue {
