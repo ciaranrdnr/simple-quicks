@@ -374,6 +374,123 @@ input.done:focus {
   text-align: center;
 }
 
+.bubbleInbox,
+.bubbleOutbox {
+  margin: 0.6rem;
+}
+
+.bubbleBottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bubbleBottom.outbox {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.bubbleChatInbox {
+  border-radius: 5px;
+  background-color: #fceed3;
+  padding: 0.6rem;
+  max-width: 350px;
+}
+
+.bubbleChatInbox p {
+  margin-top: 0;
+}
+
+.bubbleTop.outbox p {
+  text-align: right;
+  color: #9b51e0;
+}
+
+.bubbleTop.inbox p {
+  color: #e5a443;
+}
+
+.bubbleChatOutbox {
+  border-radius: 5px;
+  background-color: #eedcff;
+  padding: 0.6rem;
+  max-width: 350px;
+}
+
+.bubbleChatOutbox p {
+  margin-top: 0;
+}
+
+.ModalBubbleChat-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.6rem 0.6rem 0rem 0.6rem;
+}
+
+.ModalBubbleChatTop-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Chat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: -webkit-fill-available;
+}
+
+.Chat p {
+  text-align: left;
+}
+
+.Chat > .chatLeft {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.Chat > .chatLeft > .chatLeft-left {
+  margin: 1rem 1rem 0 0;
+}
+
+.Chat > .chatLeft .chatNames {
+  color: #2f80ed;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.Chat > .chatLeft .chatLatestName,
+.Chat > .chatLeft .chatLatestMessage {
+  font-size: 14px;
+}
+
+.Chat .chatDate {
+  font-size: 14px;
+  padding: 0 0.6rem;
+}
+
 .addTask-Topper {
   margin: 0;
 }
@@ -401,6 +518,7 @@ input.done:focus {
   font-size: 1rem;
   height: 2.5rem;
   border: 1px solid #828282;
+  border-radius: 5px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 5px;
@@ -409,6 +527,10 @@ input.done:focus {
 .typeBar:focus {
   border: 1px solid #828282;
   outline: none;
+}
+
+button {
+  cursor: pointer;
 }
 
 select,
@@ -437,7 +559,8 @@ option {
           animation-timing-function: ease-in-out;
 }
 
-.ModalTask-top {
+.ModalTask-top,
+.ModalChat-top {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -460,10 +583,34 @@ option {
   min-height: 12vh;
 }
 
+.chatNotif {
+  float: right;
+  padding: 0 0.6rem;
+}
+
+.chatBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fill-available;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.chatBar .typeBar {
+  width: -webkit-fill-available;
+}
+
+.chatNames {
+  font-size: 16px;
+  color: #2f80ed;
+}
+
 .ModalTask-inner {
   position: absolute;
   display: block;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   right: 1.2rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -477,14 +624,62 @@ option {
   background-color: white;
 }
 
-.ModalTask-bottom {
+.ModalChat-inner {
+  position: absolute;
+  display: block;
+  padding: 1rem 1.5rem;
+  right: 1.2rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow-y: hidden;
+  bottom: 100px;
+  border-radius: 5px;
+  max-width: 734px;
+  min-width: 36vw;
+  max-height: 78vh;
+  background-color: white;
+}
+
+.ModalBubbleChat-inner {
+  position: absolute;
+  display: block;
+  font-size: 14px;
+  right: 1.2rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow-y: hidden;
+  bottom: 100px;
+  border-radius: 5px;
+  max-width: 734px;
+  min-width: 40vw;
+  max-height: 78vh;
+  background-color: white;
+}
+
+.ModalBubbleChat-center {
+  padding: 0.6rem;
+  overflow-y: scroll;
+  max-height: 55vh;
+}
+
+.ModalTask-bottom,
+.ModalChat-bottom {
   border-radius: 5px;
   overflow-y: scroll;
   max-height: 68vh;
   min-height: 10vh;
   background-color: white;
+}
+
+.ModalTask-bottom {
   -webkit-animation: inModal 0.6s linear;
           animation: inModal 0.6s linear;
+}
+
+.ModalBubbleChat-bottom {
+  padding: 0.6rem;
 }
 
 .no-box {
@@ -493,7 +688,8 @@ option {
 }
 
 .no-box.no-border:focus {
-  border: none;
+  outline: none;
+  border: 1px solid white;
 }
 
 .no-box:focus {
@@ -529,6 +725,10 @@ textarea {
           align-items: center;
   background: #ffffff;
   border-radius: 5px;
+  width: -webkit-fill-available;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .searchform button {
@@ -553,10 +753,11 @@ textarea {
           align-items: center;
   padding: 0.625rem;
   float: left;
-  width: 38.75rem;
+  width: -webkit-fill-available;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: none;
+  border-radius: 5px;
 }
 
 .searchBar:focus {
@@ -582,6 +783,10 @@ svg.icon-dots {
 
 svg.icon-dots path {
   fill: #4f4f4f;
+}
+
+svg.icon-arrow {
+  margin: 0 0.8rem 0 0;
 }
 
 svg.icon-search {
@@ -1166,7 +1371,8 @@ svg.icon-clock.blue > path {
         -ms-flex-align: start;
             align-items: flex-start;
   }
-  .ModalTask-top {
+  .ModalTask-top,
+  .ModalChat-top {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1175,25 +1381,10 @@ svg.icon-clock.blue > path {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  .ModalTask-inner {
-    display: block;
-    right: 0.3rem;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    bottom: 100px;
-    overflow-y: hidden;
-    border-radius: 5px;
-    max-width: 734px;
-    min-width: 75vw;
-    max-height: 80vh;
-    min-height: 25vh;
-    background-color: white;
-  }
-  .ModalTask-bottom {
+  .ModalTask-inner,
+  .ModalChat-inner,
+  .ModalTask-bottom,
+  .ModalChat-bottom {
     border-radius: 5px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -1231,6 +1422,11 @@ svg.icon-clock.blue > path {
 }
 
 @media screen and (max-width: 330px) {
+  .ModalBubbleChat-center {
+    padding: 0.6rem;
+    overflow-y: scroll;
+    max-height: 35vh;
+  }
   .task-value .taskValue-top,
   .task-value .taskValue-bottom,
   .task-value .task-value .taskValue-top {
@@ -1335,6 +1531,7 @@ svg.icon-clock.blue > path {
         -ms-flex-align: start;
             align-items: flex-start;
   }
+  .ModalTask-top,
   .ModalTask-top {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1359,7 +1556,8 @@ svg.icon-clock.blue > path {
             justify-content: center;
     text-align: center;
   }
-  .ModalTask-inner {
+  .ModalTask-inner,
+  .ModalChat-inner {
     position: absolute;
     padding: 0.6rem;
     right: 0.3rem;
@@ -1373,6 +1571,20 @@ svg.icon-clock.blue > path {
     max-height: 72vh;
     background-color: white;
   }
+  .ModalBubbleChat-inner {
+    position: absolute;
+    right: 0.3rem;
+    bottom: 100px;
+    overflow: hidden;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    border-radius: 5px;
+    max-width: 88vw;
+    max-height: 72vh;
+    background-color: white;
+  }
+  .ModalTask-bottom,
   .ModalTask-bottom {
     border-radius: 5px;
     overflow-y: scroll;

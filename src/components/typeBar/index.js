@@ -2,16 +2,16 @@ import Btn from "../btn";
 const TypeBar = (props) => {
   if ((props.btn !== "none") & (props.type !== "date")) {
     return (
-      <div className="flex">
+      <div className="flex chatBar">
         <input
           placeholder={`Type ${props.ph}`}
-          className={`${props.ph} TypeBar`}
+          className={`${props.ph} typeBar`}
           value={props.value}
           onChange={props.onChange}
           onBlur={props.onBlur}
           readOnly={props.readOnly}
         ></input>
-        <Btn title="Send" ripple="blue" />
+        <Btn title="Send" ripple="blue" color="blue" />
       </div>
     );
   } else if (props.type === "date") {

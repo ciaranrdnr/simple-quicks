@@ -2,24 +2,17 @@ import BtnCircle from "../btnCircle";
 import lightning from "../../assets/icons/lightning.svg";
 import Inbox from "../../assets/icons/chats-purple.svg";
 import Task from "../../assets/icons/task-orange.svg";
-const BtnGroup = ({
-  showBtn,
-  setShowBtn,
-  onClickTask,
-  onClickInbox,
-  showGuidence,
-  setGuidence,
-}) => {
+const BtnGroup = (
+  { showBtn, onClickTask, onClickLightning, onClickInbox },
+  props
+) => {
   return (
     <div className="bottom-right">
       <BtnCircle
         url={lightning}
         title="lightning"
         ripple="blue"
-        onClick={() => {
-          setShowBtn(!showBtn);
-          setGuidence(!showGuidence);
-        }}
+        onClick={onClickLightning}
       />
       {showBtn ? (
         <>

@@ -219,6 +219,87 @@ input {
     text-align: center;
   }
 }
+.bubbleInbox,
+.bubbleOutbox {
+  margin: 0.6rem;
+}
+.bubbleBottom {
+  display: flex;
+  &.outbox {
+    flex-direction: row-reverse;
+  }
+}
+.bubbleChatInbox {
+  border-radius: 5px;
+  background-color: $chats-orange-2;
+  padding: 0.6rem;
+  max-width: 350px;
+  p {
+    margin-top: 0;
+  }
+}
+.bubbleTop.outbox {
+  p {
+    text-align: right;
+    color: $chats-purple-1;
+  }
+}
+.bubbleTop.inbox {
+  p {
+    color: $chats-orange-1;
+  }
+}
+.bubbleChatOutbox {
+  border-radius: 5px;
+  background-color: $chats-purple-2;
+  padding: 0.6rem;
+  max-width: 350px;
+  p {
+    margin-top: 0;
+  }
+}
+.ModalBubbleChat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.6rem 0rem 0.6rem;
+}
+
+.ModalBubbleChatTop-left {
+  display: flex;
+  align-items: center;
+}
+
+.Chat {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: -webkit-fill-available;
+  p {
+    text-align: left;
+  }
+  > .chatLeft {
+    display: flex;
+    justify-content: flex-start;
+    > .chatLeft-left {
+      margin: 1rem 1rem 0 0;
+    }
+    .chatNames {
+      color: $primary-blue;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .chatLatestName,
+    .chatLatestMessage {
+      font-size: 14px;
+    }
+  }
+
+  .chatDate {
+    font-size: 14px;
+    padding: 0 0.6rem;
+  }
+}
 .addTask-Topper {
   margin: 0;
   > .addTaskTopper-right {
@@ -235,12 +316,16 @@ input {
   font-size: 1rem;
   height: 2.5rem;
   border: 1px solid #828282;
+  border-radius: 5px;
   box-sizing: border-box;
   border-radius: 5px;
   &:focus {
     border: 1px solid #828282;
     outline: none;
   }
+}
+button {
+  cursor: pointer;
 }
 select,
 option {
@@ -263,7 +348,8 @@ option {
 
   animation-timing-function: ease-in-out;
 }
-.ModalTask-top {
+.ModalTask-top,
+.ModalChat-top {
   display: flex;
   margin-bottom: 1rem;
   justify-content: space-between;
@@ -274,10 +360,26 @@ option {
   align-items: center;
   min-height: 12vh;
 }
+.chatNotif {
+  float: right;
+  padding: 0 0.6rem;
+}
+.chatBar {
+  display: flex;
+  width: -webkit-fill-available;
+  justify-content: space-between;
+  .typeBar {
+    width: -webkit-fill-available;
+  }
+}
+.chatNames {
+  font-size: 16px;
+  color: $primary-blue;
+}
 .ModalTask-inner {
   position: absolute;
   display: block;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   right: 1.2rem;
   justify-content: center;
   overflow-y: hidden;
@@ -288,19 +390,59 @@ option {
   max-height: 78vh;
   background-color: white;
 }
-.ModalTask-bottom {
+.ModalChat-inner {
+  position: absolute;
+  display: block;
+  padding: 1rem 1.5rem;
+  right: 1.2rem;
+  justify-content: center;
+  overflow-y: hidden;
+  bottom: 100px;
+  border-radius: 5px;
+  max-width: 734px;
+  min-width: 36vw;
+  max-height: 78vh;
+  background-color: white;
+}
+.ModalBubbleChat-inner {
+  position: absolute;
+  display: block;
+  font-size: 14px;
+  right: 1.2rem;
+  justify-content: center;
+  overflow-y: hidden;
+  bottom: 100px;
+  border-radius: 5px;
+  max-width: 734px;
+  min-width: 40vw;
+  max-height: 78vh;
+  background-color: white;
+}
+.ModalBubbleChat-center {
+  padding: 0.6rem;
+  overflow-y: scroll;
+  max-height: 55vh;
+}
+.ModalTask-bottom,
+.ModalChat-bottom {
   border-radius: 5px;
   overflow-y: scroll;
   max-height: 68vh;
   min-height: 10vh;
   background-color: white;
+}
+.ModalTask-bottom {
   animation: inModal 0.6s linear;
+}
+.ModalBubbleChat-bottom {
+  padding: 0.6rem;
 }
 .no-box {
   border: 1px solid white;
   background: none;
   &.no-border:focus {
-    border: none;
+    outline: none;
+    border: 1px solid white;
   }
   &:focus {
     outline: none;
@@ -329,6 +471,8 @@ textarea {
   align-items: center;
   background: #ffffff;
   border-radius: 5px;
+  width: -webkit-fill-available;
+  justify-content: space-between;
   button {
     background: none;
     border: none;
@@ -342,9 +486,10 @@ textarea {
   align-items: center;
   padding: 0.625rem;
   float: left;
-  width: 38.75rem;
+  width: -webkit-fill-available;
   box-sizing: border-box;
   border: none;
+  border-radius: 5px;
   &:focus {
     border: none;
     outline: none;
@@ -367,6 +512,9 @@ svg {
     path {
       fill: $primary-grey;
     }
+  }
+  &.icon-arrow {
+    margin: 0 0.8rem 0 0;
   }
   &.icon-search {
     position: relative;
@@ -759,26 +907,16 @@ svg {
     justify-content: center;
     align-items: flex-start;
   }
-  .ModalTask-top {
+  .ModalTask-top,
+  .ModalChat-top {
     display: flex;
     margin-bottom: 1rem;
     justify-content: space-between;
   }
-  .ModalTask-inner {
-    display: block;
-    right: 0.3rem;
-    justify-content: center;
-    align-items: center;
-    bottom: 100px;
-    overflow-y: hidden;
-    border-radius: 5px;
-    max-width: 734px;
-    min-width: 75vw;
-    max-height: 80vh;
-    min-height: 25vh;
-    background-color: white;
-  }
-  .ModalTask-bottom {
+  .ModalTask-inner,
+  .ModalChat-inner,
+  .ModalTask-bottom,
+  .ModalChat-bottom {
     border-radius: 5px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -810,6 +948,11 @@ svg {
 
 // SMALL PHONE
 @media screen and (max-width: 330px) {
+  .ModalBubbleChat-center {
+    padding: 0.6rem;
+    overflow-y: scroll;
+    max-height: 35vh;
+  }
   .task-value .taskValue-top,
   .task-value .taskValue-bottom,
   .task-value .task-value .taskValue-top {
@@ -871,6 +1014,7 @@ svg {
     justify-content: center;
     align-items: flex-start;
   }
+  .ModalTask-top,
   .ModalTask-top {
     display: flex;
     margin-bottom: 1rem;
@@ -885,7 +1029,8 @@ svg {
     text-align: center;
   }
 
-  .ModalTask-inner {
+  .ModalTask-inner,
+  .ModalChat-inner {
     position: absolute;
     padding: 0.6rem;
     right: 0.3rem;
@@ -897,6 +1042,19 @@ svg {
     max-height: 72vh;
     background-color: white;
   }
+  .ModalBubbleChat-inner {
+    position: absolute;
+    // padding: 0.6rem;
+    right: 0.3rem;
+    bottom: 100px;
+    overflow: hidden;
+    justify-content: center;
+    border-radius: 5px;
+    max-width: 88vw;
+    max-height: 72vh;
+    background-color: white;
+  }
+  .ModalTask-bottom,
   .ModalTask-bottom {
     border-radius: 5px;
     overflow-y: scroll;

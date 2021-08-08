@@ -7,7 +7,7 @@ const BtnTaskGroup = (props) => {
         <div id="btnG-Inbox">
           <button
             className={`btn-circle ripple-white btnG-Inbox`}
-            onClick={props.onClick}
+            onClick={props.onClickInbox}
           >
             <img src={Inbox} alt="inbox" />
           </button>
@@ -16,7 +16,7 @@ const BtnTaskGroup = (props) => {
         <div id={`btnG-Task`}>
           <button
             className={`btn-circle ripple-orange btn-group btnG-Task`}
-            onClick={props.onClick}
+            onClick={props.onClickTask}
           >
             <IconTask />
           </button>
