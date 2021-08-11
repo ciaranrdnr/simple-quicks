@@ -71,8 +71,8 @@ function App() {
           onClickTask={(e) => {
             e.preventDefault();
 
-            setShowBtn(!showBtn);
             setShowTask(!showTask);
+            setShowBtn(!showBtn);
             setShowChatDetail(false);
             setShowChat(false);
             setGuidence(false);
@@ -81,11 +81,12 @@ function App() {
           onClickInbox={(e) => {
             e.preventDefault();
 
-            setShowTask(!showTask);
+            setShowTask(false);
             setShowBtn(!showBtn);
             setShowChatDetail(false);
             setShowChat(!showChat);
             setGuidence(false);
+            setShowTaskBtn(false);
           }}
           showGuidence={showGuidence}
           setGuidence={setGuidence}
