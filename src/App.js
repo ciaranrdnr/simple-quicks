@@ -68,17 +68,20 @@ function App() {
               setGuidence(!showGuidence);
             }
           }}
-          onClickTask={() => {
+          onClickTask={(e) => {
+            e.preventDefault();
+
             setShowBtn(!showBtn);
             setShowTask(!showTask);
             setShowChatDetail(false);
             setShowChat(false);
             setGuidence(false);
-
             setShowTaskBtn(true);
           }}
           onClickInbox={(e) => {
             e.preventDefault();
+
+            setShowTask(!showTask);
             setShowBtn(!showBtn);
             setShowChatDetail(false);
             setShowChat(!showChat);
@@ -92,6 +95,7 @@ function App() {
         <BtnTaskGroup
           onClickInbox={(e) => {
             e.preventDefault();
+
             setShowBtn(false);
             setShowChat(false);
             setGuidence(false);
@@ -101,6 +105,7 @@ function App() {
           }}
           onClickTask={(e) => {
             e.preventDefault();
+
             setShowBtn(true);
             setShowTaskBtn(false);
           }}
