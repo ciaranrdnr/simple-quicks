@@ -99,6 +99,11 @@ function App() {
             setShowTask(!showTask);
             setShowChat(true);
           }}
+          onClickTask={(e) => {
+            e.preventDefault();
+            setShowBtn(true);
+            setShowTaskBtn(false);
+          }}
         />
       ) : null}
     </div>

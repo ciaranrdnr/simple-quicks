@@ -56,12 +56,8 @@ const ModalBubbleChat = ({
           </div>
         </div>
         <div className="ModalBubbleChat-center">
-          <BubbleChatInbox message="Selamat malam, mas Gerbang Tagihan. Apa kabss?" />
-          <BubbleChatOutbox message="Iya mas Musk, baikk. wkwkwk" />
-          <BubbleChatInbox message="Gimana proyek vaksin chip?" />
-          <BubbleChatOutbox message="Lancarr" />
-          <BubbleChatOutbox message="Saya lihat diberita mas Musk habis prank DOGE ya. Mantepp" />
-          <BubbleChatInbox message="hehe makasih Tagihan" />
+          <BubbleChatInbox message="Selamat malam, mas Gerbang Tagihan. Apa kabar?" />
+          <BubbleChatOutbox message="Iya mas Musk, baik" />
         </div>
         <div className="ModalBubbleChat-bottom">
           <TypeBar btn="true" ph="a New Message" />
